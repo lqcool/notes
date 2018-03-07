@@ -1,44 +1,44 @@
-//»ñÈ¡¾µÏñµØÖ·(Ô­À´µÄÎªhttps://registry.npmjs.org/)
-> npm get registry
-//ÉèÖÃ¾µÏñµØÖ·(ÌÔ±¦¾µÏñ)
-> npm config set registry http£º//registry.npm.taobao.org
-//°²×°Ö¸¶¨°æ±¾µÄÄ£¿é
-> npm install moduleName@versionNo
-//ÁĞ³öÈ«¾ÖÌ×¼ş
-> npm ls -g
-//ÁĞ³öÈ«¾ÖÌ×¼şÏêÏ¸×ÊÑ¶
-> npm ls -gl
-//ÁĞ³ö¾Ö²¿µÄÌ×¼ş
-> cd ÏîÄ¿Ä¿Â¼
-> npm ls
-//ÁĞ³ö¾Ö²¿Ì×¼şÏêÏ¸×ÊÑ¶
-> mpm ls -l
-//ËÑÑ°Ì×¼ş
-> npm search <package name>
-//Ğ¶ÔØÈ«¾Ö×é¼ş
-> npm uninstall <package name> -g
-//Ğ¶ÔØ¾Ö²¿×é¼ş
-> cd ÏîÄ¿ÎÄ¼ş¼Ğ
-> npm uninstall <package name>
-//¸üĞÂÈ«¾Ö×é¼ş
-> npm update -g
-//¸üĞÂ¾Ö²¿×é¼ş
-> cd ÏîÄ¿ÎÄ¼ş¼Ğ
-> npm update
-//¸üĞÂnodeÄ£¿é
-> npm update moduleName
-//²é¿´µ±Ç°°üµÄ°²×°Â·¾¶
-> npm root
-//²é¿´È«¾ÖµÄ°ü°²×°Â·¾¶
-> npm root -g
-//²é¿´npm °²×°°æ±¾
-> npm -v
-//³õÊ¼»¯ÏîÄ¿£¨Ä£¿é£©
-> npm init
-//¼ì²é°üÊÇ·ñÒÑ¾­¹ıÊ±£¬´ËÃüÁî»áÁĞ³öËùÓĞÒÑ¾­¹ıÊ±µÄ°ü£¬¿ÉÒÔ¼°Ê±½øĞĞ°üµÄ¸üĞÂ
-> npm outdated
+//è·å–é•œåƒåœ°å€(åŸæ¥çš„ä¸ºhttps://registry.npmjs.org/)
+>npm get registry
+//è®¾ç½®é•œåƒåœ°å€(æ·˜å®é•œåƒ)
+>npm config set registry httpï¼š//registry.npm.taobao.org
+//å®‰è£…æŒ‡å®šç‰ˆæœ¬çš„æ¨¡å—
+>npm install moduleName@versionNo
+//åˆ—å‡ºå…¨å±€å¥—ä»¶
+>npm ls -g
+//åˆ—å‡ºå…¨å±€å¥—ä»¶è¯¦ç»†èµ„è®¯
+>npm ls -gl
+//åˆ—å‡ºå±€éƒ¨çš„å¥—ä»¶
+>cd é¡¹ç›®ç›®å½•
+>npm ls
+//åˆ—å‡ºå±€éƒ¨å¥—ä»¶è¯¦ç»†èµ„è®¯
+>mpm ls -l
+//æœå¯»å¥—ä»¶
+>npm search <package name>
+//å¸è½½å…¨å±€ç»„ä»¶
+>npm uninstall <package name> -g
+//å¸è½½å±€éƒ¨ç»„ä»¶
+>cd é¡¹ç›®æ–‡ä»¶å¤¹
+>npm uninstall <package name>
+//æ›´æ–°å…¨å±€ç»„ä»¶
+>npm update -g
+//æ›´æ–°å±€éƒ¨ç»„ä»¶
+>cd é¡¹ç›®æ–‡ä»¶å¤¹
+>npm update
+//æ›´æ–°nodeæ¨¡å—
+>npm update moduleName
+//æŸ¥çœ‹å½“å‰åŒ…çš„å®‰è£…è·¯å¾„
+>npm root
+//æŸ¥çœ‹å…¨å±€çš„åŒ…å®‰è£…è·¯å¾„
+>npm root -g
+//æŸ¥çœ‹npm å®‰è£…ç‰ˆæœ¬
+>npm -v
+//åˆå§‹åŒ–é¡¹ç›®ï¼ˆæ¨¡å—ï¼‰
+>npm init
+//æ£€æŸ¥åŒ…æ˜¯å¦å·²ç»è¿‡æ—¶ï¼Œæ­¤å‘½ä»¤ä¼šåˆ—å‡ºæ‰€æœ‰å·²ç»è¿‡æ—¶çš„åŒ…ï¼Œå¯ä»¥åŠæ—¶è¿›è¡ŒåŒ…çš„æ›´æ–°
+>npm outdated
 
-//°²×°expressÉú³ÉÆ÷£¬¿ìËÙ¹¹½¨expressÏîÄ¿(Í¨¹ıÓ¦ÓÃÉú³É¹¤¾ßexpress¿ÉÒÔ¿ìËÙ´´½¨Ò»¸öÓ¦ÓÃ¹Ç¼Ü)
-> npm install express-generator -g
-//ÔÚapiÎÄ¼ş¼ĞÀïÃæÉú³ÉÒ»¸ö¹Ç¼Ü
-> express api
+//å®‰è£…expressç”Ÿæˆå™¨ï¼Œå¿«é€Ÿæ„å»ºexpressé¡¹ç›®(é€šè¿‡åº”ç”¨ç”Ÿæˆå·¥å…·expresså¯ä»¥å¿«é€Ÿåˆ›å»ºä¸€ä¸ªåº”ç”¨éª¨æ¶)
+>npm install express-generator -g
+//åœ¨apiæ–‡ä»¶å¤¹é‡Œé¢ç”Ÿæˆä¸€ä¸ªéª¨æ¶
+>express api
