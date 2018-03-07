@@ -186,6 +186,13 @@
 //删除已经推送到远程的标签
 >(1)先删除本地标签 git tag -d 标签名称
 >(2)删除远程标签 git push origin :refs/tags/标签名
+//查看远程分支
+>git branch -r 或者 git branch -a
+//查看远程分支详情
+>git branch -r -v 或者 git branch -a -v
+//删除远程分支
+>(1)git branch -r -d origin/分支名称
+>(2)git push origin :分支名称
 
 (2018-3-7修订)
 
