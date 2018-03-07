@@ -187,4 +187,7 @@
 >(1)先删除本地标签 git tag -d 标签名称
 >(2)删除远程标签 git push origin :refs/tags/标签名
 
+(2018-3-7修订)
+
+
 
