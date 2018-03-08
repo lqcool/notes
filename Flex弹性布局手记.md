@@ -15,35 +15,35 @@
 > - Flex项目(Flex Item)：采用 Flex 布局的元素的所有子元素自动成为容器成员----“项目”
 
 #### 应用于容器的属性
-> - flex-direction：flex-direction属性决定主轴的方向（即项目的排列方向）。该属性可能有4个值
-		（1）row（默认值）：主轴为水平方向，起点在左端。
-		（2）row-reverse：主轴为水平方向，起点在右端。
-		（3）column：主轴为垂直方向，起点在上沿。
-		（4）column-reverse：主轴为垂直方向，起点在下沿。
-> - flex-wrap：该属性定义如果一条轴线排列不下项目，如何换行。该属性可能取3个值
-		（1）nowrap（默认）：不换行。
-		（2）wrap：换行，第一行在上方。
-		（3）wrap-reverse：还行过，第一行在下方。
-> - flex-flow：该属性是flex-direction属性和flex-wrap属性的简写形式。默认值 row nowrap。
-> - justify-content：该属性定义了项目在主轴上面的对齐方式。可能取5个值
-		（1）flex-start（默认值）：左对齐。
-		（2）flex-end：右对齐。
-		（3）center：居中对齐。
-		（4）space-between：两端对齐，项目之间的距离是相同的。（项目间隔距离相等）
-		（5）space-around：每个项目两侧的间隔相等，所以，项目之间的间隔比项目与边框的间隔大一倍。
->- align-item：属性定义项目在交叉轴上如何对齐。它可能取5个值
-		（1）flex-start：交叉轴的起点对齐。
-		（2）flex-end：交叉轴的终点对齐。
-		（3）center：交叉轴的中点对齐。
-		（4）baseline: 项目的第一行文字的基线对齐。
-		（5）stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
->- aligin-content：定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。该属性可能取6个值
-		（1）flex-start：与交叉轴的起点对齐。
-		（2）flex-end：与交叉轴的终点对齐。
-		（3）center：与交叉轴的中点对齐。
-		（4）space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
-		（5）space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
-		（6）stretch（默认值）：轴线占满整个交叉轴。
+> - flex-direction：flex-direction属性决定主轴的方向（即项目的排列方向）。该属性可能有4个值<br>
+		（1）row（默认值）：主轴为水平方向，起点在左端。<br>
+		（2）row-reverse：主轴为水平方向，起点在右端。<br>
+		（3）column：主轴为垂直方向，起点在上沿。<br>
+		（4）column-reverse：主轴为垂直方向，起点在下沿。<br>
+> - flex-wrap：该属性定义如果一条轴线排列不下项目，如何换行。该属性可能取3个值<br>
+		（1）nowrap（默认）：不换行。<br>
+		（2）wrap：换行，第一行在上方。<br>
+		（3）wrap-reverse：还行过，第一行在下方。<br>
+> - flex-flow：该属性是flex-direction属性和flex-wrap属性的简写形式。默认值 row nowrap。<br>
+> - justify-content：该属性定义了项目在主轴上面的对齐方式。可能取5个值<br>
+		（1）flex-start（默认值）：左对齐。<br>
+		（2）flex-end：右对齐。<br>
+		（3）center：居中对齐。<br>
+		（4）space-between：两端对齐，项目之间的距离是相同的。（项目间隔距离相等）<br>
+		（5）space-around：每个项目两侧的间隔相等，所以，项目之间的间隔比项目与边框的间隔大一倍。<br>
+>- align-item：属性定义项目在交叉轴上如何对齐。它可能取5个值<br>
+		（1）flex-start：交叉轴的起点对齐。<br>
+		（2）flex-end：交叉轴的终点对齐。<br>
+		（3）center：交叉轴的中点对齐。<br>
+		（4）baseline: 项目的第一行文字的基线对齐。<br>
+		（5）stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。<br>
+>- aligin-content：定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。该属性可能取6个值<br>
+		（1）flex-start：与交叉轴的起点对齐。<br>
+		（2）flex-end：与交叉轴的终点对齐。<br>
+		（3）center：与交叉轴的中点对齐。<br>
+		（4）space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。<br>
+		（5）space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。<br>
+		（6）stretch（默认值）：轴线占满整个交叉轴。<br>
 		
 #### 应用于项目的属性
 
