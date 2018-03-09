@@ -17,7 +17,7 @@
 
 > 1. 因特网上有数千种不同的数据类型，HTTP 仔细地给每种要通过 Web 传输的对象都打上了名为 MIME 类型 （MIME type）的数据格式标签。
 >
-> 2. 当 Web 浏览器从服务器中取回一个对象时，会去查看相关的 MIME 类型，看看它是否知道应该如何处理这个对象。大多数浏览器都可以处理数百种常见的对象类型：显示图片文件、解析并格式化HTML文件....。！[2](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/2.png)
+> 2. 当 Web 浏览器从服务器中取回一个对象时，会去查看相关的 MIME 类型，看看它是否知道应该如何处理这个对象。大多数浏览器都可以处理数百种常见的对象类型：显示图片文件、解析并格式化HTML文件....。![2](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/2.png)
 >
 > 3. MIME 类型是一种文本标记，表示一种主要的对象类型和一个特定的子类型，中间由一条斜杠来分隔。
 >
@@ -31,6 +31,6 @@
 
 ##### 1.3.2 URI
 
-> URI（Uniform Resource Identi?er，URI）：服务器资源名被称为统一资源标识符。在世界范围内唯一标识并定位资源。！[3](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/3.png)
+> URI（Uniform Resource Identi?er，URI）：服务器资源名被称为统一资源标识符。在世界范围内唯一标识并定位资源。![3](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/3.png)
 >
 > 
