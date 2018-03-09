@@ -18,7 +18,7 @@
 >
 > 大多数 URL 方案的 URL 语法都建立在这个由 9 部分构成的通用格式上：（URL最要的3个部分为：方案【scheme】、主机【host】、路径【path】）
 >
-> <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>
+> ![8](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/8.png)
 >
 > 通用的URL组件表：
 >
