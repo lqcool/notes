@@ -21,6 +21,14 @@
 
 > vi 文件名称（或者 vim 文件名称）
 
+//创建.gitignore文件
+
+> (1)进入根目录
+>
+> (2)touch .gitignore 生成“.gitignore”文件
+>
+> (3)在.gitignore文件中输入要忽略的文件夹或者文件,例如忽略test文件夹：test/
+
 //将文件夹变为git仓库
 
 > git init
