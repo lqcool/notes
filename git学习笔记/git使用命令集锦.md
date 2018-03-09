@@ -114,6 +114,14 @@
 // 把本地库的内容推送到远程，用git push命令，实际上就是把当前分支master推送到远程
 >git push -u origin master
 
+//移除远程仓库
+
+> git remote rm 仓库名称，例如git remote rm origin
+
+//重命名远程仓库
+
+> git remote rename 原始仓库名 现在仓库名，例如git remote rename orgin ddd306ddd
+
 //克隆一个本地库
 >git clone git仓库地址
 
