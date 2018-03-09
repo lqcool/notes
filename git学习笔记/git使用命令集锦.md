@@ -5,6 +5,10 @@
 > config --global user.email "youEmail@xx.com" git config
 > 命令的--global参数，表示这台机器上面的所有GIT仓库都会使用这个配置，也可一对某个指定的仓库使用不同的用户名和Email地址。
 
+//查看git bash版本
+
+> git version 
+
 //创建文件夹
 
 > mkdir 文件夹名称
