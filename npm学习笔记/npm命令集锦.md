@@ -22,14 +22,14 @@
 
 //搜寻套件
 >npm search <package name>
-  
+
 //卸载全局组件
 >npm uninstall <package name> -g
-  
+
 //卸载局部组件
 >cd 项目文件夹
 >npm uninstall <package name>
-  
+
 //更新全局组件
 >npm update -g
 
