@@ -1,8 +1,8 @@
 ### 第1章 http概述
 
-![6](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/6.png)
+$$![6](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/6.png)$$
 
-​                                                                          ***HTTP 网络协议栈***
+$$***HTTP 网络协议栈***$$
 
 ------
 
