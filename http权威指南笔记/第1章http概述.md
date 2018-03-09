@@ -2,7 +2,7 @@
 
 <center>![6](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/6.png)</center>
 
-<center>$$***HTTP 网络协议栈***</center>
+<center>***HTTP 网络协议栈***</center>
 
 ------
 
