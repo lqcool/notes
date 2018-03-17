@@ -20,3 +20,4 @@ java中支持三种类型的集合
 ![9](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/9.png)
 
 > 途中Collection接口是处理对象集合的跟接口，AbstractCollection是提供Collection接口部分实现的便利类。
+
