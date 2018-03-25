@@ -169,6 +169,9 @@
 //推送指定分支到分支到远程
 >git push origin 分支名称
 
+//使用强制push方法发（这样会覆盖远程分支，丢失修改）
+>push -u origin master -f 
+
 //创建远程origin的dev分支到本地
 >git checkout -b dev origin/dev
 
