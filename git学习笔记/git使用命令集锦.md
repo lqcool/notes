@@ -5,6 +5,10 @@
 > config --global user.email "youEmail@xx.com" git config
 > 命令的--global参数，表示这台机器上面的所有GIT仓库都会使用这个配置，也可一对某个指定的仓库使用不同的用户名和Email地址。
 
+//git设置文件上传的上限（遇到>100M的文件上传失败）
+
+> git config --global http.postBuffer 524288000（设置http.postBuffer为500M，上限为500M）
+
 //查看git bash版本
 
 > git version 
