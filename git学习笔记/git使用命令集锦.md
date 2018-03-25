@@ -1,6 +1,6 @@
 //安装篇
 
-> 1：windows上面使用git直接到官网下载git安装程序，完成后开始菜单中git->git bash如果能弹出，安装成功。
+> 1：windows上面使用git直接到官网下载git安装程序，完成后开始菜单中git->git bash如果能弹出，安装成功。	
 > 2：自报家门，打开git bash $ git config --global user.name "Your Name" $ git
 > config --global user.email "youEmail@xx.com" git config
 > 命令的--global参数，表示这台机器上面的所有GIT仓库都会使用这个配置，也可一对某个指定的仓库使用不同的用户名和Email地址。
