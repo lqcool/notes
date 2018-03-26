@@ -249,7 +249,7 @@
 
 > git mv file_from file_to
 
-//git设置文件上传的上限（遇到>100M的文件上传失败）
+//git设置文件上传的上限（遇到>100M的文件上传失败）=====>失败了
 
 > git config --global http.postBuffer 524288000（设置http.postBuffer为500M，上限为500M）
 
