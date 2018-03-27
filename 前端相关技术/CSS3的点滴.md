@@ -10,11 +10,11 @@
 >
 > ***CSS 2样式表通过<link>标签的 media 属性***为样式表指定 设备类型（如显示屏或打印机）
 >
-> > (1)<link rel="stylesheet" media="screen and (orientation:position)" href="some.css" />
+> > (1)/<link rel="stylesheet" media="screen and (orientation:position)" href="some.css" ///>
 > >
 > > 上面代码表示：媒体查询表达式询问了媒体类型（你是一块显示屏吗？），然后询问了媒体特性（显 示屏是纵向放置的吗？）任何纵向放置的显示屏设备都会加载some.css样式表。
 > >
-> > (2)<link rel="stylesheet" media="not screen and (orientation:position)" href="some.css" />
+> > (2)/<link rel="stylesheet" media="not screen and (orientation:position)" href="some.css" ///>
 > >
 > > 上面的代码效果与(1)恰恰相反，任何非纵向放置的显示屏设备都会加载some.css
 > >
