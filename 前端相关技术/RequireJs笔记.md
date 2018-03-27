@@ -173,7 +173,7 @@ require方法：调用模块
 >
 > - baseUrl属性
 >
->   baseUrl参数指定本地模块位置的基准目录，也就是本地模块路径相对于哪一个目录。该属性通常由require.js加载时的data-main属性指定。
+>   baseUrl参数指定本地模块位置的基准目录，也就是本地模块路径相对于哪一个目录（baseUrl 要求所有的js文件都放在同一个文件夹目录下，不然就会报错）。该属性通常由require.js加载时的data-main属性指定。
 >
 > - shim属性
 >
