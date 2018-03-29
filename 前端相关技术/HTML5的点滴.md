@@ -1,10 +1,97 @@
 ### HTML5的点滴
 
-> - HTML5 强调简化标签，仅链接那些我们必须 的 CSS、JavaScript和图片文件
->   - 标准的 HTML 4.01网页的文档类型声明如下：<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/     TR/html4/loose.dtd"> 
->   - HTML5简化以后：<!DOCTYPE html> 
-> - HTML5也接受非常松散 的语法
->   - <script src="js/jquery-1.6.2.js"></script>  HTML5中type属性不再需要。
->   - <sCRipt SrC=js/jquery-1.6.2.js></script>   HTML5中大小写混用，源文件引用没有加入""，同样通过验证。
-> - HTML5增加了语义化标签
->   - 这对我们来说是件好事，但更重要的是对 搜索引擎来也是件好事。搜素引擎能比以前更好地理解我们的网页，并相应地评定网页 内容。如：使用<nav>标签会使我们的代码变得更有语义，这就是导航栏。
+#### HTML5 强调简化标签，仅链接那些我们必须 的 CSS、JavaScript和图片文件
+
+> - 标准的 HTML 4.01网页的文档类型声明如下：<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/     TR/html4/loose.dtd"> 
+>
+>
+> - HTML5简化以后：<!DOCTYPE html> 
+
+#### HTML5也接受非常松散的语法
+
+> - \<script src="js/jquery-1.6.2.js"\>\</script\>  HTML5中type属性不再需要。
+> - \<sCRipt SrC=js/jquery-1.6.2.js\>\</script\>   HTML5中大小写混用，源文件引用没有加入""，同样通过验证。
+> - \<link href=CSS/main.css rel=stylesheet\> 没有闭合标签斜杠（/），属性值没有引号括起来，没有type声明，HTML5都接受。
+> - 宽松的语法可应用于整个文档，\<div id=wrapper\> 
+
+#### HTML5增加了语义化标签
+
+> *HTML5结构级语义元素：*
+>
+> - 这对我们来说是件好事，但更重要的是对 搜索引擎来也是件好事。搜素引擎能比以前更好地理解我们的网页，并相应地评定网页 内容。如：使用\<nav\>标签会使我们的代码变得更有语义，这就是导航栏。
+> - \<section\>：元素用来定义文档或应用程序中的区域（或节）。例如，可以用它组织你的个 人信息，一个\<section\>用于联系信息，另一个用于新闻动态。
+> - \<nav\>：用来定义文档的主导航区域，其中的链接指向其他页面或当前页面的某些区域。
+> - \<article\>：与\<section\>元素用容易混淆，\<article\>元素用来包裹独立的内容片段。当搭建一个页面时，想想你准备放入\<article\>标签的内容能否作为一个整块而被复制粘贴到另外一个完全不同的网站且能保持完整的意义？应该使用\<article\>标签包裹的内容，明显的例子 就是博客正文。如果出现嵌套的\<article\>元素，那内层的\<article\>元素内容 应该和外层文章内容直接有关。 
+> - \<aside\>：元素用来表示与页面主内容松散相关的内容。在实践中，我经常将其用作侧边栏（当它包含合适的内容时）。另外，引文、广告以及导航元素（如友情链接等）也可以使用它。
+> - \<hgroup\> ：如果页面中有一组使用\<h1\>、\<h2\>、\<h3\>等标签的标题、标语和副标题，则可以考虑 使用\<hgroup\>将它们包裹起来。这样在 HTML5的大纲结构算法中就会隐藏次级标题元 素，从而只让\<hgroup\>中的第一个标题元素进入文档大纲。
+> - \<header\> ：元素不计入大纲结构，所以不能用它来划分内容结构，而是应该用它来包含对区域内容的介绍说明。实际使用中，\<header\>可用作网站头部的“刊头”区域，也 可用作对其他内容如\<article\>元素的简要介绍。
+> - \<footer\> ：\<footer\>元素也不计入大纲结构，所以也不能用于划分内容结构。 应该用它来包含其所在区域的辅助信息。例如可以用它包含一组指向其他页面的超链接， 或者用它包含版权信息。它也可以视情况在同一个页面上多次出现。 例如博客网站的页脚可以用它，同时博客正文\<article\>元素内的文脚也可以用它。不 过规范指出，博文作者的联系信息应该使用\<address\>元素来包裹。 
+> - \<address\> ：元素用于明确地标注离其近的\<article\>或\<body\>祖先元素的联系信息。 为避免产生混淆，请记住\<address\>中一般不放具体的邮政地址，除非相应内容确实需 要联系地址。而邮政地址和其他可能会改变的联系信息应该使用\<p\>标签来包裹。 
+>
+> 当页面中有\<article\>或\<section\>元素时，每个\<article\>或\<section\>元素都可以有自己的头部、脚 注和导航。需要谨记的是，使用\<section\>的目的不是为了美化样式，而是为了标识一个鲜明独立 的内容块。一个内容块（section）一般都应该带有标题
+>
+> 
+>
+> *HTML5的文本级语义元素：HTML5 还修订了一些被称之为行内元素的标签。*
+>
+> - \<b\> ：它的实际用途其实是“给文本加粗”，HTML5标准定义为，一小段文本，纯粹为了吸引人的注意，除此之外不传达任何重要性，也不 暗示其他语态或语气。如文档摘要中的关键词等等。（加粗）
+> - \<em\> ：HTML5中它的语义是，强调内容中的重点。（斜体）
+> - \<i\> ：HTML5标准中对<i>的描述，一小段有不同语态或语气的文字，或者是样子上与普通文章有所差异以便 标明不同特点的文字。 （斜体）
+>
+> *HTML中的其它标签：*
+>
+> - \<video\>：添加多媒体
+> - \<audio\>：添加音频
+>
+>
+> - HTML5中可以在\<a\>标签中嵌入多个元素
+>
+>   ```html
+>   <a>
+>   	<h2>The Home Page</h2>
+>       <p>This is paragraph also links to the home page</p>
+>       <img src="som/isx.jpg" alt="home-slice"/>
+>   </a>
+>   ```
+>
+>   唯一需要记住的是——很明显：不能在一个标签中嵌套另一个标签，也不能在标签中嵌 套表单
+>
+> - HTML废弃的东西（包括暂保留和非保留的）
+>
+>   - script链接中的 language属性
+>   - img标签中的 border属性（暂保留）
+>   - strike、enter、font、acronym、frame 和 frameset......（非保留标签）
+
+#### 用HTML5的方法为页面添加视屏或者音频
+
+> HTML4.01在网页中添加媒体非常麻烦，HTML5就非常简单：
+>
+> - \<video src="myVideo.ogg"\>\</video\>
+>
+>   ```html
+>   <video src="video/myVideo.mp4" width="640" height="480">
+>       What, do you mean you don't understand HTML5?
+>   </video> 
+>   <!--上面代码在网页中会出现视屏控件，视屏会出现，但是没有播放控制栏，最佳controls属性就会出现视屏控制栏，再追加autoplay属性，就会出现自动播放，一般不使用，因为我们一般不喜欢自动播放-->
+>   <video src="video/myVideo.mp4" width="640" height="640" controls autoplay>
+>   	ssss
+>   </video>
+>   ```
+>
+>   属性：
+>
+>   - controls：显示播放控制栏
+>   - autoplay：控制自动播放
+>   - preload：用来控制媒体预加载
+>   - loop：用来重复播放视屏
+>   - poster：定义视屏缩略图，这个属性在视频播放延时非常有用
+>
+>   要使用某一个属性，在video标签中追加上面属性中的某一个即可。下面包括上面所有属性：
+>
+>   ```html
+>   <video src="video/myVideo.mp4" width="640" height="480" controls autoplay preload="auto" loop poster="myVideoPoster.jpg">
+>       What, do you mean you don't understand HTML5?
+>   </video> 
+>   ```
+>
+> - \<source\>：标签提供备用的媒体源文件
