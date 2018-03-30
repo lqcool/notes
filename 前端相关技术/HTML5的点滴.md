@@ -95,3 +95,37 @@
 >   ```
 >
 > - \<source\>：标签提供备用的媒体源文件
+>
+>   由于目前的情况是， 一些浏览器支持某一套视频和音频文件格式，而另一些浏览器则支持其他格式。有一种方法能在一个标签内支持多种媒体格式。那就是\<source\>标签。
+>
+>   手握多种格式的媒体文件，则可以这样编写视频标签：
+>
+>   ```html
+>   <video width="640" height="480" controls autoplay preload="auto" loop poster="myVideoPoster.jpg">     
+>       <source src="video/myVideo.ogv" type="video/ogg">    
+>       <source src="video/myVideo.mp4" type="video/mp4">     
+>       What, do you mean you don't understand HTML5? 
+>   </video> 
+>   <!--上面代码根据浏览器的支持格式解析，如果浏览器支持ogg格式的，那么会使用第一个，否则会继续解析下一个<source>标签-->
+>   ```
+>
+> - \<audio\>的使用和\<video\>除了width，height，poster属性之外，其它的使用基本相同，甚至可以互换使用，最大的差别就是\<audio\>没有可视的内容播放区域。
+>
+> - 响应式视屏，如果设置了\<video\>标签的height，width属性，那么就不能响应式，解决办法就是删除height，weight添加代码 video{max-width:100%;height:auto}
+>
+>   这种方法对本页面中的视频文件很有用，但它不能解决使用 iframe 嵌入的视频的响应 问题。要解决这样的问题，可以使用插件。
+
+#### 离线的Web应用
+
+> 我们知道肯定会有越来越多的移动设备用户访问我们的 网站，为他们提供一种不需要网络连接仍可访问网站内容的途径如何？HTML5 的离线 Web 应用特性将其变成了可能。 
+>
+> 例子：假设有一个在线笔记应用，当用户的手机网络断开时，他可能正在编辑一则笔记。使用 HTML5的离线 Web 应用，他就可以继续离线编辑笔记，然后等到网络再次连接时将本地 数据发送到服务器。
+>
+> ***使用HTML5离线Web应用为我们的网站创建一个离线版本*** 
+>
+> 机制：
+>
+> 离线Web应用的运行机制是每个需要离线使用的网页都指定一个后缀名为.manifest的 文本文件。这个文本文件罗列了该网页离线使用时所需的所有资源文件（HTML、图片 JavaScript等等）。支持离线 Web 应用的浏览器会自动读取.manifest 文件，下载文件中 所罗列的资源文件，并将其缓存在本地以备网络断开时使用。
+>
+> 
+
