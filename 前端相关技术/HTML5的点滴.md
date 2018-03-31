@@ -123,9 +123,68 @@
 >
 > 使用HTML5离线Web应用为我们的网站创建一个离线版本
 >
-> 机制：
+> **机制：**
 >
 > 离线Web应用的运行机制是每个需要离线使用的网页都指定一个后缀名为.manifest的 文本文件。这个文本文件罗列了该网页离线使用时所需的所有资源文件（HTML、图片 JavaScript等等）。支持离线 Web 应用的浏览器会自动读取.manifest 文件，下载文件中 所罗列的资源文件，并将其缓存在本地以备网络断开时使用。
+>
+> **让网页可以离线使用**
+>
+> 在html文件中，指定一个.manifest文件：
+>
+> ```html
+> <html lang='en' manifest="/my.manifest"></html>
+> <!--文件名可以随意，但是后缀名建议使用.manifest-->
+> <!--必须在每一个准备离线使用的页面的HTML标签中都追加manifest-->
+> <!--如果使用的是 Apache服务器，可能还需要修改一下.htaccess文件，在里面追加一条代码
+> AddType text/cache-manifest .manifest
+> 这样就保证了.manifest 文件拥有正确的 MIME类型，即 text/cache-manifest。 
+> -->
+> <!--.htaccess 文件中还可以加入以下代码
+> 	<Files my.manifest>   
+> 		ExpiresActive On  
+> 		ExpiresDefault "access"
+> 	</Files> 
+> 上面这几行代码，可以阻止浏览器缓存缓存文件。因为my.manifest是一个静态文件，浏览器默认会缓存这个文件，加入上面的几行代码，可以告诉浏览器不要这么干
+> -->
+>
+> ```
+>
+> 填充my.manifest文件，告诉浏览器哪些文件是用作离线存储的
+>
+> ```properties
+> CACHE MANIFEST
+> #v1
+>
+> CACHE:
+> view/index.html
+> css/index.css
+> img/head.jpg
+>
+> NETWORK:
+> *
+> FALLBACK:
+> //offline.html
+> ```
+>
+> - manifest文件必须以CACHE MANIFEST开头，第二行就是一句注释，注明了 manifest文 件的版本号。
+> - CACHE:部分罗列了所有离线使用所需的文件。这些文件的路径都是相对 offline.manifest 而言的，所以文件路径可能需要根据情况稍作修改。使用绝对路径也是可以的。 
+> - NETWORK:部分罗列了所有不需要被缓存的文件。此处罗列的文件在网络畅通的情况下都会直接跳过缓存。如果你想网站内容在网络畅通 的情况下及时更新（而不是仅在离线缓存中查找），可以在此处使用*。星号被称为在线 白名单通配符。 
+> - FALLBACK:部分使用/字符定义了一个 URL模板。它的作用是访问每个页面时都会问“缓存 中有这个页面吗？”，如果有则显示缓存页面，如果没有则显示指定的 offline.html 文件。
+>
+> 有一种更简单的办法来设置 offline.manifest 文件，任何指定了离 线 manifest 文件的页面（就是在标签中追加了 manifest="/offline.manifest"的页 面）在被用户访问时都会被自动加入到本地缓存。选择使用这个方法时有一点需要注意，这种方法只会下载和缓存用户访问的 HTML页面， 不会缓存页面内引入的图片、JavaScript或者其他资源文件。如果这些资源文件是必需的， 那么请按照上节中的方法在 CACHE:部分专门声明这类文件。 
+>
+> ```properties
+> CACHE 
+> MANIFEST # Cache Manifest v1 
+> FALLBACK: 
+> //offline.html 
+> NETWORK: 
+> * 
+> ```
+>
+> 版本注释的用途
+>
+> 对网站内容或任何资源文件做了修改之后，你必须得对 offline.manifest 文件也做点 修改并将其重新上传服务器。这样就能让服务器为浏览器提供新版本文件，而浏览器则 会下载该新版本文件并再次触发离线存储进程。# Cache Manifest v1 
 >
 > 
 
