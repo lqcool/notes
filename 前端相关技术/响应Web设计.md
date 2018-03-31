@@ -26,7 +26,7 @@
 >
 > (4)\<link rel="stylesheet" media="not screen and (orientation:position) and (min-width:800px)***,projection***" href="some.css" \/\>
 >
-> 上面代码写的媒体查询列表，***注意第一媒体查询之间使用逗号分割，第二在上面代码中projection之后没有and，也没有任何特性/值的组合，后续表达式，意味着只 要是 projection 就满足条件***
+> 上面代码写的媒体查询列表，注意第一媒体查询之间使用逗号分割，第二在上面代码中projection之后没有and，也没有任何特性/值的组合，后续表达式，意味着只 要是 projection 就满足条件
 >
 > 
 >
@@ -50,13 +50,13 @@
 > | scan                | 电视机的扫描方式，值可设为 progressive（逐行扫描）或 interlace（隔 行扫描）。如 720p HD电视（720p的 p即表明是逐行扫描）匹配 scan: progressive， 而 1080i HD 电视（1080i中的 i表明是隔行扫描）匹配 scan: interlace |
 > | grid                | 用来检测输出设备是网格设备还是位图设备                       |
 >
-> ***上面表格中的特性，除了最后两个，scan和grid特性，其它的都可以使用min和max前缀创建一个查询范围***
+> 上面表格中的特性，除了最后两个，scan和grid特性，其它的都可以使用min和max前缀创建一个查询范围
 
 
 
 ####  阻止移动浏览器自动调整页面的大小
 
-> iOS和 Android浏览器都基于 WebKit核心，这两种浏览器以及 很多其他浏览器（如 Opera Mobile），***都支持用 viewport meta 元素覆盖默认的画布缩放设置***。
+> iOS和 Android浏览器都基于 WebKit核心，这两种浏览器以及 很多其他浏览器（如 Opera Mobile），都支持用 viewport meta 元素覆盖默认的画布缩放设置。
 >
 > \<meta name="viewport"  content="initial-scale=2.0,width=device-width" /\> 
 >
