@@ -188,6 +188,14 @@
 >(1)先用git stash list 查看，然后恢复到指定的stash
 >(2)git stash apply stash@{0}
 
+//根据名字删除stash
+
+> (1)先用git stash list 查看，然后删除指定的stash
+>
+> (2)git stash drop stash@{0}
+>
+> 也可以使用 git stash clear 命令一次性删除所有缓存的stash
+
 //查看远程库的信息
 >git remote
 
