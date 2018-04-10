@@ -4,7 +4,7 @@
 >
 > Ajax的技术组成
 >
-> ![20](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/20.png)
+> ![21](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/21.png)
 >
 > **XMLHttpRequest对象的方法**
 >
