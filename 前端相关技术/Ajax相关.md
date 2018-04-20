@@ -15,7 +15,9 @@
 > | getAllResponseHeaders()                                      | 返回HTTP响应的头部信息                                       |
 > | getResponseHeader(string header)                             | 返回指定的一个响应的头部信息，例如getResponseHeader("Content-Type")会返回响应类型的值 |
 > | send(varian content)                                         | 向服务器发送请求，参数指定随着HTTP请求发送的数据，**参数类型可以为字符串类型和文档对象** |
-> | setRequestHeader(string header, string value)                | 设置HTTP请求的头部信息                                       |
+> | setRequestHeader(string header, string value)                | 设置HTTP请求的头部信息，要成功发送请求，必须在在调用open()方法之后且在调用send()方法之前调用setRequestHeader() |
+> | overrideMimeType(String mime)                                | XMLHttpRequest2级的方法，用于重写服务器返回的MIME类型。因为XHR会根据服务器返回的MIME类型具体的处理响应。 |
+> |                                                              |                                                              |
 >
 > **XMLHttpRequest对象的属性**
 >
@@ -24,9 +26,14 @@
 > | readyState         | 请求处理状态描述，**有五个阶段**<br />（1）0：（未初始化）未初始化，XMLHttpRequest对象已经创建，但是没有初始化请求<br />（2）1：（启动）正在加载请求的URL，在调用open()方法后与调用send()方法之间就进入改状态，**这个时候没有发生网络通信**<br />（3）2：（发送）加载完成，调用send()方法后就进入了改状态<br />（4）3：（接收）在交互中，**收到了部分响应数据**，但是responseText和responseXML处于不可用状态<br />（5）4：（完成）完成，已经从服务器端收到了完整的响应数据。 |
 > | responseText       | 服务器响应的数据部分，数据类型为字符串                       |
 > | responseXML        | 服务器响应的数据部分，数据类型为一个XML文档对象（DOM）       |
-> | status             | 服务器响应状态，得到的标准HTTP协议的响应状态码，如404200，500等等 |
+> | status             | 服务器响应状态，得到的标准HTTP协议的响应状态码，如404，200，500等等（在超时终止之后再访问status属性，将会报错，可以将status检查语句放在try-catch中） |
 > | statusText         | 状态码的说明，与status相对应，如status=404，那么statusText=Not Found |
 > | onreadystatechange | 当readyState属性发生变化的时候，XMLHttpRequest对象自动调用由onreadystatechange所指定的JavaScript |
+> | timeout            | 开始是IE添加的属性，后来被纳入XMLHttpRequest2级规范中来。用来进行超时设定 |
+> | ontimeout          | 对应于timeout的回掉函数，如果规定时间没有接收到响应，将会调用这个函数 |
+> |                    |                                                              |
+> |                    |                                                              |
+> |                    |                                                              |
 >
 > **创建XMLHttpRequest对象**
 >
@@ -64,5 +71,26 @@
 > | 安全性       | URL明文传输，不安全               | 可加密后在HTTP头中传输，较为安全 |
 > | 请求提交方式 | 可以为form，也可以为任意的URL连接 | 只能以form方式提交               |
 > | 一般用途     | 获取信息                          | 提交信息（也可以获取信息）       |
+>
+> **发送XHR请求，并监听响应**
+>
+> ```javascript
+> //HTTP中状态码304表示访问的资源没有经过修改，可以使用缓存中的数据
+> var xhr = createXHR();//创建XHR对象，这个时候xhr.readyState=0，是未初始化状态
+> xhr.onreadystatechange = function(){
+>     if(xhr.readyState == 4){//当xhr.readyState=4的时候，表示已经收到了全部的响应数据，可以在客户端使用了
+>         if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){
+>             var responseText = xhr.responseText;//这里可以操作数据了
+>         } 
+>         else{
+>             //出错了
+>         }
+>     }
+> }
+> xhr.open(method,url,true);//初始化一个请求，这个时候xhr.readyState=1
+> xhr.send(null);//发送一个请求，这个时候xhr.readyState=2
+> //xhr.readyState=3的时候表示已经收到了部分数据
+>
+> ```
 >
 > 
