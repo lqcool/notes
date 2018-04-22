@@ -11,4 +11,6 @@
 > **HTTP 使用术语 流入 （inbound）和 流出 （outbound）来描述 事务处理 （transaction）的方向**。**报文流入源端服务器，工作完成之后，会流回用户的 Agent 代理中**。
 >
 > ![32](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/32.png)
+>
+> 
 
