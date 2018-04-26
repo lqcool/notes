@@ -40,3 +40,35 @@
 | FileReader.readAsText()         | 开始读取指定的[`Blob`](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob)中的内容。一旦完成，`result`属性中将包含一个字符串以表示所读取的文件内容。 |
 
 > readAsText：方法有两个参数，其中第二个参数是文本的编码格式，默认值为UTF-8。这个方法是将文件以文本方式读取，结果是文本文件中的内容。
+
+**使用：示例（加载计算机中的图片展示到页面上）**
+
+> ```html
+> <div>
+>     <div class="headImg">
+>         <input type="file" style="visibility: hidden" id ="headFile" onchange="loadImage()"/>
+>         <img onclick="trigerFileInput()" style="hidden;width:35%;height:85px" id="default" src="../img/timg.jpg"/>
+>     </div>
+> </div>
+> <script>
+>     //触发input[type="file"]的选择事件，打开图片选择窗口
+>     function trigerFileInput(){
+>       document.getElementById("headFile").click();
+>     }
+>     //加载图片
+>    	function loadImage(){
+>       var file = document.getElementById("headFile").files[0];
+>       var filename = file.name;
+>       if(/(\.png|\.jpg)$/.test(filename)){
+>         var reader = new FileReader();
+>         reader.onload = function(){
+>           document.getElementById("default").src=this.result;
+>         }
+>         reader.readAsDataURL(file);
+>       }
+>       else{
+>         alert("请选择正确的文件");
+>       }
+>   }
+> </script>
+> ```
