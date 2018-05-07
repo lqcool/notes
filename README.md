@@ -4,7 +4,7 @@ my study notes(学习笔记)
 
 前端技能网络（图片源自网络）
 
-
+![前端知识网络](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%83%BD.jpg)
 
 ## 目录
 ### 
