@@ -325,4 +325,4 @@ require方法：调用模块
 >
 > 上面代码将模块文件压缩合并成两个文件，第一个是main.js（指定排除infrastructure.js），第二个则是infrastructure.js。
 
-来自 [《JavaScript标准参考教程(alpha)》](http://javascript.ruanyifeng.com/) by阮一峰
+摘自 [《JavaScript标准参考教程(alpha)》](http://javascript.ruanyifeng.com/) by阮一峰

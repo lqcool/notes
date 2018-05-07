@@ -1,6 +1,11 @@
 ## notes
 my study notes(学习笔记)
 本仓库完全用于记录个人的学习笔记，记录包括技术、语言、工具等等的一些列学习记录。
+
+前端技能网络（图片源自网络）
+
+
+
 ## 目录
 ### 
 >[GIT学习笔记](https://github.com/LQ55/notes/tree/master/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0)
