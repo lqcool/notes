@@ -13,6 +13,8 @@ gulp能够做什么东西？（以前这些工作都是人工做的）
 
 gulp的配置文件**gulpfile.js**（其实整个gulp的配置文件，基本上都是在做一些任务的配置，比如创建任务，监听任务等等）
 
+> 结合gulp的API https://www.gulpjs.com.cn/docs/api/
+>
 > gulp只有5个方法
 >
 > - task：这个API用来创建任务，在命令行下可以输入gulp test来执行test的任务
