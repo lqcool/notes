@@ -117,13 +117,14 @@ gulp的使用：
 > gulp.task("scripts",function(){
 >   gulp.src("src/js/*.js")  //该任务针对的文件夹
 >       .pipe(concat('all.js'))
->       .pipe(rename('all.min.js'))
+>       .pipe(rename('all.min.js'))//重命名文件
 >       .pipe(uglify())
 >       .pipe(gulp.dest("./dist"));
 > });
 > 
 > //默认任务
 > gulp.task('default', function(){
+>     //默认执行的方法，引号内的内容对应上面task写的内容
 >     gulp.run('lint', 'less', 'scripts');
 >     // 监听JS文件变化
 >     gulp.watch('src/js/*.js', function(){
@@ -147,5 +148,31 @@ gulp的使用：
 > //指的就是运行gulpfile.js中配置的default任务，当然也可以单独运行其它的任务，例如gulp lint等等
 > gulp default
 > ```
+>
+> **文件改变后，文件不会主动编译问题**，需要在控制台输入enter键，移除了default任务中的run方法后改写为如下形式就可以了
+>
+> ```javascript
+> //默认任务
+> gulp.task('default', function(){
+>     gulp.run('lint', 'less', 'scripts');
+>     // 监听JS文件变化
+>     gulp.watch('src/js/*.js',["scripts"]);
+>      // 监听less文件变化
+>     gulp.watch('src/less/*.less',["less"]);
+> });
+> ```
+>
+> 上面写法和下面写法一样
+>
+> ```javascript
+> //默认任务
+> gulp.task('default', function(){
+>     gulp.run('lint', 'less', 'scripts');
+>     // 监听文件变化
+>     gulp.watch(['src/js/*.js','src/less/*.less'],["scripts","less"]);
+> });
+> ```
+>
+> 
 >
 > 构建中我遇到的问题：在运行自动话构建过程中失败，报错说是缺少了node-sass，安装不成功，解决方式在如下链接中。https://segmentfault.com/a/1190000010984731
