@@ -48,7 +48,7 @@ gulp的使用：
 > - gulp-uglify：用于打乱文件
 >
 > ```
-> npm install --save-dev gulp gulp-concat jshint gulp-jshint gulp-less gulp-rename gulp-sass gulp-uglify
+> npm install --save-dev gulp gulp-concat jshint gulp-jshint gulp-less gulp-rename gulp-sass gulp-uglify gulp-minify-css gulp-imagemin
 > ```
 >
 > 安装完成后的package.json就是下面的样子
@@ -67,8 +67,10 @@ gulp的使用：
 >   "devDependencies": {
 >     "gulp": "^3.9.1",
 >     "gulp-concat": "^2.6.1",
+>     "gulp-imagemin": "^4.1.0",
 >     "gulp-jshint": "^2.1.0",
 >     "gulp-less": "^3.5.0",
+>     "gulp-minify-css": "^1.2.4",
 >     "gulp-rename": "^1.2.2",
 >     "gulp-sass": "^4.0.1",
 >     "gulp-uglify": "^3.0.0",
@@ -80,7 +82,6 @@ gulp的使用：
 >     "node-sass": "^4.9.0"
 >   }
 > }
-> 
 > ```
 >
 > **很重要的一步** 编写gulpfile.js文件（自动话构建就是根据这个文件来）
@@ -98,6 +99,7 @@ gulp的使用：
 > var less = require("gulp-less");
 > var concat = require("gulp-concat");
 > var uglify = require("gulp-uglify");
+> var minifycss = require("gulp-minify-css");
 > var rename = require("gulp-rename");
 > 
 > //gulp.src("src/js/*.js");
@@ -105,7 +107,8 @@ gulp的使用：
 > gulp.task('less',function(){
 >   gulp.src('src/less/*.less')  //该任务针对的文件夹
 >       .pipe(less())  //该任务的调用模块
->       .pipe(gulp.dest("./dist/css"));  //将会在dist/css下面生成index.css
+>       .pipe(minifycss())
+>       .pipe(gulp.dest("./dist/css"));  //另存压缩后的文件，将会在dist/css下面生成index.css
 > });
 > 
 > //创建另外一个任务用于检查脚本
@@ -117,9 +120,9 @@ gulp的使用：
 > 
 > //创建一个任务用于合并压缩文件
 > gulp.task("scripts",function(){
->   gulp.src("src/js/*.js")  //该任务针对的文件夹
->       .pipe(concat('all.js'))
->       .pipe(rename('all.min.js'))//重命名文件
+>   gulp.src("src/js/*.js")
+>       .pipe(concat('all.js'))//合并之后的文件
+>       .pipe(rename('all.min.js'))//压缩后的文件
 >       .pipe(uglify())
 >       .pipe(gulp.dest("./dist"));
 > });
