@@ -145,7 +145,7 @@ gulp的使用：
 >
 > 我的项目结构如下：
 >
-> ![40](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/40.png)
+> ![41](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/41.png)
 >
 > 上述完成编写以后就是运行命令进行自动化构建了
 >
