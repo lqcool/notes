@@ -68,13 +68,56 @@
 
 > **函数防抖** ：如果用手指一直按住一个弹簧，它将不会弹起直到你松手为止。也就是说当调用动作n毫秒后，才会执行该动作，若在这n毫秒内又调用此动作则将重新计算执行时间。
 >
+> 原理：通俗的将就是你尽管触发事件，但是我一定在事件触发n秒后才执行，如果你在一个事件触发的n秒内又触发了这个事件，那我就以新的事件的时间为准，n秒后才执行，总之，就是要等到你触发完事件n秒内不再触发事件。
+>
+> 最简陋的函数防抖方式
+>
 > ```javascript
-> var debounce = function(fn,idle){
->     var last;
+> //例如给添加的onmousemove事件
+> var count = 1;
+> var container = document.getElementById("container");
+> function moveAction(){
+>     container.innerHTML = count++;
+> }
+> //注册鼠标移动时间
+> container.onmousemove = debounce(moveAction,1000);
+> //函数防抖，外面包一层函数debounce的原因是里层函数形成闭包，保存外部函数的变量，也就是上一次的timeoutId，以此方便后面清除。
+> function debounce(func,wait){
+>     var timeout;
+>     return function(){
+>         clearTimeout(timeout);
+>         timeout = setTimeout(func,wait);
+>     }
+> }
+> ```
+>
+> 不使用debounce的时候，注册的事件处理程序的this指向的是id为container的dom节点，但是使用了debounce函数以后this值指向了window，**是由于由`setTimeout()`调用的代码运行在与所在函数完全分离的执行环境上。[**详细可参考MDN setTimeout **](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout)**这会导致，这些代码中包含的 `this` 关键字在非严格模式会指向 `window` (或全局)对象，严格模式下为 undefined，这和所期望的`this`的值是不一样的。 为了保证一致性，对debounce函数改写如下
+>
+> ```javascript
+> function debounce(func,wait){
+>     var timeout;
 >     return function(){
 >         var context = this;
->         var args = arguments;
->         
+>         clearTimeout(timeout);
+>         setTimeout(function(){
+>             func.apply(context);
+>         },wait);
+>     }
+> }
+> ```
+>
+> 但是上面的debounce函数还是有问题，就是事件处理函数一般都会传入事件对象e，通过事件对象获取一些数据，但是在上面代码中指定的func里面获取事件对象为undefined，因为根本就没有传如其它的参数，因此需要传入参数。改写如下
+>
+> ```javascript
+> function debounce(func,wait){
+>     var timeout;
+>     return function(){
+>         var context = this;
+>         var args = arguments;//接收到参数
+>         clearTimeout(timeout);
+>         setTimeout(function(){
+>             func.apply(context,args);
+>         },wait);
 >     }
 > }
 > ```
