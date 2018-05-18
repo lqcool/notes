@@ -58,3 +58,9 @@
 > https://segmentfault.com/a/1190000010292798
 >
 > https://segmentfault.com/a/1190000004322358
+
+ 前端相关技术 
+
+
+
+javaScript异步、消息队列、事件循环
