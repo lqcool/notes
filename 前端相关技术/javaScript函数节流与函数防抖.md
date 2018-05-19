@@ -4,11 +4,11 @@
 
 ### 函数节流
 
-> **函数节流**：simplely speak**就是让一个函数无法在很短的时间间隔内连续调用** ，只有当上一次函数执行过了你规定的时间间隔才能进行下一次该函数调用。也就是会说预先设定一个执行周期，当调用动作的时刻大于等于执行周期则执行该动作，然后进入下一个新周期。通俗的讲：如果将水龙头拧紧直到水是以水滴的形式流出，那你会发现每隔一段时间，就会有一滴水流出。
-
-> **函数节流原理以及实例代码** ：函数节流是使用定时器，触发一个事件的时候，先使用定时器（setTimeout）让这个事件延迟一会再执行，如果这个时间间隔内又出发了时间，那就清除掉原来的定时器，再重新设置一个定时器延迟一会执行。
+> **函数节流的原理**：持续触发一个事件，每隔一段的时间，事件只会执行一次。simplely speaking，就像一个水龙头，我们把它关得很小，流水事件一直在触发，但是是每隔一定的事件才滴出一滴水滴。
 >
-> 第一种：来自《javaScript高级程序设计》
+> **实现方式：** 一般有两种，第一就是使用时间戳，第二就是使用setTimeout定时器。
+>
+> 使用时间戳方式：当我们触发事件的时候，取出当前的时间戳，求出当前时间戳和前一次执行的时间戳的差值，如果差值大于我们设定的时间间隔，那么就执行该动作，并更新执行时间，否则，就不执行该动作。
 >
 > ```javascript
 > //《JavaScript高级程序设计》
@@ -22,47 +22,28 @@
 >         method.call(context);
 >     },100);
 > }
->
+> 
 > //处理函数
 > function handOpe(){
 >     /*do something what you want*/
 > }
->
+> 
 > //regist the aciton at the object named window
 > window.onresize = function(){
 >     throttle(handOpe,window);
 > }
 > ```
 >
-> 第二种：使用闭包的方法形成一个是由做用原图来存放定时器的timer
+> 使用定时器方式：使用定时器的原理就是，当事件触发的时候，检查定时器是否存在，如果存在说明函数还没有执行（因为函数执行中我们清空了timeoutId）所以这个时候我们就不执行，等它执行，并清空定时器，这个时候就可以设置下一个定时器了。
 >
 > ```javascript
-> var throttle = function(fn,delay){
->     var timer = null;
->     console.log(this);//window
->     return function(){//闭包，保证了全局的timer
->         var context = this;
->         console.log(context);//btn
->         var args = arguments;
->         clearTimeout(timer);
->         timer = setTimeout(function(){
->             fn.apply(context,args);
->         });
->     }
-> }
->
-> function handOpe(){
->     /*do something what you want*/
-> }
->
-> window.onresize = function(){
->     throttle(handOpe,100);
-> }
->
-> //$("#btn").on("click",throttle(handOpe,1000));
+> 
 > ```
 >
-> 
+> **compare**
+>
+> - 第一种（时间戳）事件会立即执行，第二种事件会在wait秒后执行
+> - 第一种事件停止后没有办法再执行，第二种事件停止后依然会再执行一次事件函数。
 
 ### 函数防抖
 
@@ -91,7 +72,7 @@
 > }
 > ```
 >
-> 不使用debounce的时候，注册的事件处理程序的this指向的是id为container的dom节点，但是使用了debounce函数以后this值指向了window，**是由于由`setTimeout()`调用的代码运行在与所在函数完全分离的执行环境上。[**详细可参考MDN setTimeout **](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout)**这会导致，这些代码中包含的 `this` 关键字在非严格模式会指向 `window` (或全局)对象，严格模式下为 undefined，这和所期望的`this`的值是不一样的。 为了保证一致性，对debounce函数改写如下
+> 不使用debounce的时候，注册的事件处理程序的this指向的是id为container的dom节点，但是使用了debounce函数以后this值指向了window，**是由于由`setTimeout()`调用的代码运行在与所在函数完全分离的执行环境上。** [详细可参考MDN setTimeout ](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout)这会导致，这些代码中包含的 `this` 关键字在非严格模式会指向 `window` (或全局)对象，严格模式下为 undefined，这和所期望的`this`的值是不一样的。 为了保证一致性，对debounce函数改写如下
 >
 > ```javascript
 > function debounce(func,wait){
@@ -122,9 +103,6 @@
 > }
 > ```
 >
-> 
->
-> 
 
 ### 函数节流（throttle）与函数防抖（debounce）应用场景
 
@@ -141,6 +119,11 @@
 > - scroll/resize事件
 > - 文本连续输入，ajax验证/关键字搜索
 
-参考：[JS魔法堂：函数节流（throttle）与函数去抖（debounce）](http://www.cnblogs.com/fsjohnhuang/p/4147810.html)
+更多高级的用法，可以参考下面的链接中！
 
-[函数节流和防抖](http://www.cnblogs.com/cloud-/p/6726428.html)
+参考：
+
+[JavaScript专题之跟着 underscore 学节流 ](https://github.com/mqyqingfeng/Blog/issues/26)
+
+[JavaScript专题之跟着underscore学防抖 ](https://github.com/mqyqingfeng/Blog/issues/22)
+
