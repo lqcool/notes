@@ -1,5 +1,7 @@
 ### RequireJs和AMD规范模块化编程相关笔记
 
+文档：https://github.com/amdjs/amdjs-api/wiki/AMD
+
 #### RequireJS简介
 
 > RequireJS是一个JavaScript模块加载器。它非常适合在浏览器中使用。它是一个工具库，主要用于客户端的模块管理，当然也可以应用于服务器端，例如Node.js中。RequireJS模块管理遵循AMD规范（Asynchronoous Module Definetion）
