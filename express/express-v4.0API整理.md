@@ -30,3 +30,23 @@ options对象是可选的，支持以下属性：
 | redirect     | Redirect to trailing “/” when the pathname is a directory.   | Boolean  | `true`       |
 | setHeaders   | Function for setting HTTP headers to serve with the file.    | Function |              |
 
+
+
+app.all(path,callback,[,callback...])
+
+该方法就如同标准的[app.METHOD()](http://www.expressjs.com.cn/4x/api.html#app.METHOD) 方法们，它能够匹配所有的http方法，对于特定路径前缀或任意匹配映射“全局”逻辑是有用的。例如，如果在所有其他路由定义的顶部放置以下内容，则要求从此点上的所有路由都需要身份验证，并自动加载用户。请记住，这些回调不必作为端点：loadUser可以执行任务，然后调用NEXT（）以继续匹配后续路由。
+
+```
+app.all('*', requireAuthentication, loadUser);
+```
+一种等价写法如下：
+
+```
+app.all('*', requireAuthentication)
+app.all('*', loadUser);
+```
+下面的和前面十分相似，但是它只限制从“/API”开始的路径：
+
+```
+app.all('/api/*', requireAuthentication);
+```
