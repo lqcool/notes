@@ -196,5 +196,55 @@ fs.open('input.txt', 'r+', function(err, fd) {
 });
 ```
 
+#### 截取文件ftruncate()
+
+异步模式语法格式：fs.ftruncate(fd,len,callback)
+
+使用文件描述符读取文件
+
+参数说明：
+
+- fd:通过fs.open()方法返回的文件描述符
+- len:文件内容截取的长度
+- callback:回掉函数，没有参数
+
+详情查看https://www.runoob.com/nodejs/nodejs-fs.html
+
+#### 删除文件
+
+语法格式：fs.unlink(path,callback)
+
+#### 创建目录
+
+语法格式：fs.mkdir(path[,mode],callback);
+
+其中的mode是用于设置目录权限，默认为0777。
+
+#### 读取目录
+
+语法格式：fs.readdir(path,callback)
+
+callback回掉函数带有两个参数，err，files，err为错误信息，files为目录下的文件数组列表。
+
+```
+var fs = require("fs");
+console.log("查看/temp目录");
+fs.readdir("/temp/",function(err,files){
+    if(err){
+        return console.log(err);
+    }
+    files.forEach(function(file){
+        console.log(file);
+    });
+})
+```
+
+#### 删除目录
+
+语法格式：fs.rmdir(path,callback)；
 
 
+
+
+
+具体的文件模块方法参考：https://www.runoob.com/nodejs/nodejs-fs.html

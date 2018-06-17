@@ -45,3 +45,7 @@ console全局变量中的方法：
 | 9     | **console.assert(value[, message]\[, ...])** | 用于判断某个表达式或变量是否为真，接收两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。 |
 
 对于process全局变量，它是描述当前Node.js进程状态的对象，提供了一个与操作系统的简单接口，通常在写本地命令行程序的时候，少不了要 和它打交道。详情请看：https://www.runoob.com/nodejs/nodejs-global-object.html
+
+process.cwd()//输出当前目录
+
+process.memoryUsage()//输出当前内存使用情况
