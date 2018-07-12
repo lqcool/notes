@@ -2,7 +2,7 @@
 本文参考：[参考链接](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html) 
 参考demo：[DEMO](http://static.vgee.cn/static/index.html)
 #### Flex布局简介
-> 传统布局是基于盒装模型，依赖display属性+position属性+float属性。传统布局对于有的布局不好实现，例如垂直居中。2009年，W3C 提出了一种新的方案----Flex 布局。可以简便、完整、响应式地实现各种页面布局。
+> 传统布局是基于盒装模型，依赖display属性+position属性+float属性。传统布局对于有的布局不好实现，例如垂直居中。2009年，W3C 提出了一种新的方案----Flex 布局。可以简便、完整、响应式地实现各种页面布局。  
 
 #### Flex布局特点
 > - 任何一个容器都可以指定为 Flex 布局。.box{display: flex}
