@@ -10,9 +10,9 @@
 
 该规范定义了一个自由变量或者叫做一个全局的变量"define"作为一个方法，方法的结构如下：
 
-> define(id?,dependencies?,factory)
->
-> 第一个参数id是一个string类型的，它用来指明（specifies）当前被定义的模块，这个参数是可选的（optional），如果它不存在，模块ID应该默认为加载程序请求给定响应脚本的模块的ID。当存在时，模块ID必须是“顶级”或绝对ID（相对ID是不允许的）
+ define(id?,dependencies?,factory)
+
+ 第一个参数id是一个string类型的，它用来指明（specifies）当前被定义的模块，这个参数是可选的（optional），如果它不存在，模块ID应该默认为加载程序请求给定响应脚本的模块的ID。当存在时，模块ID必须是“顶级”或绝对ID（相对ID是不允许的）
 
 
 
