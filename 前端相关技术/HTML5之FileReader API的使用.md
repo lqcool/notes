@@ -2,11 +2,11 @@
 
 **简介**
 
-> FileReader 对象允许Web应用程序异步读取存储在用户计算机上面的文件（或者原始数据缓冲区）的内容，使用 [`File`](https://developer.mozilla.org/zh-CN/docs/Web/API/File) 或 [`Blob`](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob) 对象指定要读取的文件或数据。其中File对象可以是来自用户在一个[`input`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input)元素上选择文件后返回的[`FileList`](https://developer.mozilla.org/zh-CN/docs/Web/API/FileList)对象,也可以来自拖放操作生成的 [`DataTransfer`](https://developer.mozilla.org/zh-CN/docs/Web/API/DataTransfer)对象,还可以是来自在一个[`HTMLCanvasElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement)上执行`mozGetAsFile()`方法后返回结果。
+FileReader 对象允许Web应用程序异步读取存储在用户计算机上面的文件（或者原始数据缓冲区）的内容，使用 [`File`](https://developer.mozilla.org/zh-CN/docs/Web/API/File) 或 [`Blob`](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob) 对象指定要读取的文件或数据。其中File对象可以是来自用户在一个[`input`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input)元素上选择文件后返回的[`FileList`](https://developer.mozilla.org/zh-CN/docs/Web/API/FileList)对象,也可以来自拖放操作生成的 [`DataTransfer`](https://developer.mozilla.org/zh-CN/docs/Web/API/DataTransfer)对象,还可以是来自在一个[`HTMLCanvasElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement)上执行`mozGetAsFile()`方法后返回结果。
 
 **FileReader的构造函数**
 
-> FileReader，通过new FileReader()返回一个新构造的FileReader。
+FileReader，通过new FileReader()返回一个新构造的FileReader。
 
 **FileReader的属性和描述**
 
@@ -18,7 +18,7 @@
 
 **FileReader的事件处理**
 
-> FileReader继承自EventTarget，因此所有下面的事件都可以通过addEventListener方法使用。
+FileReader继承自EventTarget，因此所有下面的事件都可以通过addEventListener方法使用。
 
 | 事件                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
@@ -39,36 +39,36 @@
 | FileReader.readAsDataURL()      | 开始读取指定的[`Blob`](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob)中的内容。一旦完成，`result`属性中将包含一个`data:` URL格式的字符串以表示所读取文件的内容。 |
 | FileReader.readAsText()         | 开始读取指定的[`Blob`](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob)中的内容。一旦完成，`result`属性中将包含一个字符串以表示所读取的文件内容。 |
 
-> readAsText：方法有两个参数，其中第二个参数是文本的编码格式，默认值为UTF-8。这个方法是将文件以文本方式读取，结果是文本文件中的内容。
+readAsText：方法有两个参数，其中第二个参数是文本的编码格式，默认值为UTF-8。这个方法是将文件以文本方式读取，结果是文本文件中的内容。
 
 **使用：示例（加载计算机中的图片展示到页面上）**
 
-> ```html
-> <div>
->     <div class="headImg">
->         <input type="file" style="visibility: hidden" id ="headFile" onchange="loadImage()"/>
->         <img onclick="trigerFileInput()" style="hidden;width:35%;height:85px" id="default" src="../img/timg.jpg"/>
->     </div>
-> </div>
-> <script>
->     //触发input[type="file"]的选择事件，打开图片选择窗口
->     function trigerFileInput(){
->       document.getElementById("headFile").click();
->     }
->     //加载图片
->    	function loadImage(){
->       var file = document.getElementById("headFile").files[0];
->       var filename = file.name;
->       if(/(\.png|\.jpg)$/.test(filename)){
->         var reader = new FileReader();
->         reader.onload = function(){
->           document.getElementById("default").src=this.result;
->         }
->         reader.readAsDataURL(file);
->       }
->       else{
->         alert("请选择正确的文件");
->       }
->   }
-> </script>
-> ```
+```html
+<div>
+    <div class="headImg">
+        <input type="file" style="visibility: hidden" id ="headFile" onchange="loadImage()"/>
+        <img onclick="trigerFileInput()" style="hidden;width:35%;height:85px" id="default" src="../img/timg.jpg"/>
+     </div>
+ </div>
+ <script>
+     //触发input[type="file"]的选择事件，打开图片选择窗口
+     function trigerFileInput(){
+       document.getElementById("headFile").click();
+     }
+     //加载图片
+    	function loadImage(){
+       var file = document.getElementById("headFile").files[0];
+       var filename = file.name;
+       if(/(\.png|\.jpg)$/.test(filename)){
+         var reader = new FileReader();
+         reader.onload = function(){
+           document.getElementById("default").src=this.result;
+         }
+         reader.readAsDataURL(file);
+       }
+       else{
+         alert("请选择正确的文件");
+       }
+   }
+ </script>
+```
