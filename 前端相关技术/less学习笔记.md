@@ -224,5 +224,166 @@ p{
 }
 ```
 
+**Less扩展 :extend**
 
+Extend是一个less伪类，通过使用:extend选择器在一个选择器中扩展其它选择器样式，示例如下：
+
+```less
+.container{
+    &:extend(.style);
+    font-style:italic;
+}
+.style{
+    background:green;
+}
+```
+
+经过编译后转换为css文件为
+
+```css
+.container{
+    font-style:italic;
+}
+.container,.style{
+    background:green;
+}
+```
+
+通常Less扩展语法有如下一些：扩展附加到选择器、扩展内部规则集、扩展嵌套选择器、完全匹配与扩展、nth表达式、扩展"all"、选择器插值扩展、@media中的范围/扩展、重复检测。
+
+（1）扩展连接到一个选择器
+
+它看起来类似于具有选择器作为参数的伪类。 当规则集具有许多选择器时，则关键字扩展可以应用于任何选择器。 下面是定义代码中extend的格式
+
+- 在选择器之后扩展。  [例如：pre:hover**:extend(div pre)**]
+- 允许选择器和扩展之间的空格[例如：pre:hover :extend(div pre)]
+- 允许多个扩展。[例如：pre:hover:extend(div pre):extend(.bucket tr)或者pre:hover:extend(div pre,.bucket tr)]
+- 扩展必须在选择器的末尾定义。**pre:hover:extend(div pre) .nth-child(odd)类型不允许**
+
+一个扩展连接到选择器的例子：
+
+```less
+.style,container:extend(.img){
+    background:red;
+}
+.img{
+    font-size:20px;
+}
+```
+
+上面代码经过编译以后得到如下结果（对.containe进行了扩展）
+
+```css
+.style,
+.container {
+  background: red;
+}
+.img,
+.container {/*这是对.container的扩展后的结果*/
+  font-size: 20px;
+}
+```
+
+（2）Less扩展内部规则集&:extend
+
+&:extend(selector)语法可以放在规则集的正文中。它是放置扩展到规则集的每个选择器的快捷方式。
+
+```less
+.container,.style{
+    &:extend(.img);
+}
+.img{
+    font-style:italic;
+}
+```
+
+扩展后编译的结果为
+
+```css
+.img,
+.container,
+.style {
+  font-style: italic;/*.container和.style都扩展了.img的规则集*/
+}
+```
+
+（3）Less完全匹配与扩展
+
+默认情况下， extend 查找选择器之间的完全匹配。 对于具有相同含义的两个第n个表达式，扩展无关紧要，但它只寻找与为选择器匹配定义的相同的顺序形式。 
+
+```less
+.style h3,
+h3 .style{
+  color: #BF70A5;
+  font-style: italic;
+}
+.img:extend(.style h3){/*如果这里再加一个扩展.img:extend(.tyle h3):extend(h3 .style) 那么编译后.img会出现两次，并且h3 .style需要与前面的选择器完全匹配，如果前面的选择器中间没有空格，也就是h3.style，那么扩展操作里面也不应该有空格，不然会找不到扩展的选择器*/
+}
+```
+
+编译后的结果为
+
+```
+.style h3,
+h3 .style,
+.img {
+  color: #BF70A5;
+  font-style: italic;
+}
+```
+
+（4）Less的nth表达式
+
+nth表达式的形式在扩展中很重要，否则它将选择器视为不同。 nth表达式1n + 2和n + 2是等效的，但扩展将该表达式视为不同。 
+
+```less
+:nth-child(n+2){
+    color:red;
+}
+.child:extend(:nth-child(n+2)){};/*如果这里使用:nth-child(1n+2)，编译的时候会报:nth-child(1n+2)没有找到*/
+```
+
+在属性选择器中，引用类型不重要，你可以在下面示例中看到他
+
+```less
+[title=tutorialspoint]{
+    font-size:12px;
+}
+[title='tutorialspoint'] {
+ font-style: italic;
+}
+[title="tutorialspoint"] {
+  font-style: italic;
+}
+.style:extend([title=tutorialspoint]) {}
+.container:extend([title='tutorialspoint']) {}
+.img:extend([title="tutorialspoint"]) {}
+```
+
+编译后的结果为
+
+```css
+[title=tutorialspoint],
+.style,
+.container,
+.img {
+  font-size: 12px;
+}
+[title='tutorialspoint'],
+.style,
+.container,
+.img {
+  font-style: italic;
+}
+[title="tutorialspoint"],
+.style,
+.container,
+.img {
+  font-style: italic;
+}
+```
+
+**LESS 扩展“all”**
+
+当最后在扩展参数中标识关键字 all 时，LESS将该选择器作为另一个选择器的一部分。 匹配的选择器部分将被extend替换，形成一个新的选择器。 
 
