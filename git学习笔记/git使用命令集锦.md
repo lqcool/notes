@@ -1,3 +1,5 @@
+
+
 //安装篇
 
 > 1：windows上面使用git直接到官网下载git安装程序，完成后开始菜单中git->git bash如果能弹出，安装成功。	
@@ -36,6 +38,10 @@
 > (2)touch .gitignore 生成“.gitignore”文件
 >
 > (3)在.gitignore文件中输入要忽略的文件夹或者文件,例如忽略test文件夹：test/
+
+//查看git的配置
+
+> git config -l
 
 //将文件夹变为git仓库
 

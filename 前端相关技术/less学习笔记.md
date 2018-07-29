@@ -579,9 +579,396 @@ p{color:red;}
 
 **Less混合参数**
 
+（1）Mixins具有多个参数
+
 参数可以使用*逗号*或*分号*分隔。 使用逗号符号，可以将其解释为mixin参数分隔符或css列表分隔符。 如果在mixin中使用分号，那么它将用分号分隔参数，CSS列表将包含所有逗号。两种使用方式如下：
 
-- 如果你有两个参数，那么它将包含使用逗号分隔的列表。例如：.class1(1,2,3;somtext,other ting)
-- 如果有三个参数，并且只包含数字，例如：.class1(1,2,3)
+- 如果你有两个参数，那么它们将包含逗号分隔的列表。 例如 **.class1(1，2，3; sometext，other thing)**。 
+- 如果有三个参数，并且只包含数字，例如 **.class1(1，2，3)**。 
 - 您可以使用带有逗号分隔列表的虚拟分号，例如 **.class1(1，2，3;)**。 
 - 有逗号分隔的默认值。 例如 **.class1(@color：gray，green;)** 
+
+用法如下：
+
+```less
+.mixin(@color){
+  color:@color;
+}
+.mixin(@color;@padding:2){
+  color:@color;
+  padding: @padding;
+}
+.container{
+  .mixin(#fff);
+}
+```
+
+编译后的结果为：
+
+```css
+.container {
+  color: #fff;
+  padding: 2;
+}
+```
+
+（2）通过命名参数提供值
+
+Mixins通过使用它们的名称提供参数值而不是位置。 参数没有放置值的任何顺序，它们可以通过名称引用。 命名参数的结果更容易阅读，并提供清晰的代码。 如下所示：
+
+```less
+.mixin(@color:black;@fontSize:10px){
+    color:@color;
+    font-size:@fontSize;
+}
+.sx1{
+    .mixin(@font-size:20px;@color:#F59D0);
+}
+.sx2{
+    .mixin(#F79F81; @fontSize: 20px);
+}
+```
+
+（3）@argument变量传递了所有的参数。 当不想使用单个参数时， @arguments 变量很有用。 如下：
+
+```less
+.box-shadow(@x: 0; @y: 0; @height: 3px; @width: 3px) {
+  -webkit-box-shadow: @arguments;/*@argument变量包括了所有的参数在里面*/
+     -moz-box-shadow: @arguments;
+          box-shadow: @arguments;
+}
+.container {
+  .box-shadow(2px; 2px);
+}
+```
+
+编译后的结果为：
+
+```css
+.container {
+  -webkit-box-shadow: 2px 2px 3px 3px;/*可以看到编译后的结果@argument变量被所有的参数给替换掉了*/
+  -moz-box-shadow: 2px 2px 3px 3px;
+  box-shadow: 2px 2px 3px 3px;
+}
+```
+
+（4）Less高级参数和@rest变量
+
+Mixin通过使用 **...** 提供可变数量的参数。 可以通过在变量名称后面放置 **...** 为变量赋值参数。使用的一些格式如下：
+
+```less
+
+```
+
+代码中使用@rest变量
+
+```less
+.mixin(@x; @rest...) {
+   // after the variable @a, the @rest is bound to arguments
+   // @arguments is bound to all arguments
+}
+```
+
+**Less Mixins函数**
+
+（1）Less Mixin范围（作用域描述）
+
+由变量和混合组成的混合可以在调用者的作用域中使用，并且是可见的。 但是有一个例外，如果调用者包含具有相同名称的变量，那么该变量不会复制到调用者的作用域中。 只有调用者范围内的变量被保护，并且继承的变量将被覆盖。 
+
+（2）Less Mixin和返回值
+
+mixin类似于函数，在mixin中定义的变量将作为它的返回值，示例如下：
+
+```less
+.padding(@x;@y){
+    @padding:((@x+@y)/2);/*@padding是在mixin中定义的变量，将会作为返回值被返回*/
+}
+.container{
+    .padding(80px,120px);/*先调用mixin，相当于对@padding变量赋值了*/
+    padding-left:@padding;/*这里可以使用@padding变量了，他已经有值了*/
+}
+```
+
+编译后的结果为：
+
+```css
+.container {
+  padding-left: 100px;
+}
+```
+
+（3）Less mixin定义在另一个mixin中的时候，它也可以用作返回值，示例如下：
+
+```less
+.outerMixin(@value) {/*外层mixin*/
+  .nestedMixin() {/*里面的mixin，这个将会被作为返回值*/
+    font-size: @value;
+  }
+}
+.container{
+  .outerMixin(30);
+  .nestedMixin();/*这里必须要调用才能够取到font-size，前面一步相当于进行的.nestedMixin初始化赋值*/
+}
+```
+
+编译后的结果如下:
+
+```css
+.container {
+  font-size: 30;
+}
+```
+
+**LESS将规则集传递给Mixins**
+
+**分离的规则集**包含一个普通的规则集，如属性，嵌套规则集，变量声明，mixins等。**它存储在一个变量中**，并包含到其他结构中，其中规则集的所有属性都将被复制到该结构。
+
+范围：（作用域）
+
+分离的规则集中的所有变量和混合宏在被调用或定义的地方都可用，否则调用者和定义范围都可用。 当两个范围包含相同的mixin或variable时，声明范围获取优先级。 分离的规则集体在声明范围中定义。 在将分离的规则集从一个变量复制到另一个变量后，它不会更改其范围。 
+
+所有的范围类型如下：
+
+（1）定义和调用范围的可见性
+
+变量和mixin在分离的规则集中定义。示例如下：
+
+```
+@detached-rulelist:{/*一个变量用于存储分离的规则集（detached分离的）*/
+    background-color: @caller-variable;
+    .caller-mixin();
+}
+.cont {
+  @detached-ruleset();
+  @caller-variable: #AA86EE;
+  .caller-mixin() {
+    font-style:italic;
+  }
+}
+```
+
+编译后的结果为：
+
+```css
+.cont {
+  background-color: #AA86EE;
+  font-style: italic;
+}
+```
+（2）LESS 引用将不会修改分离的规则集范围
+
+通过仅给出引用，规则集不访问任何新的范围。（晦涩难懂查看：https://www.w3cschool.cn/less/t_modify_detached_ruleset_scope.html）
+
+（3）LESS 解锁将修改分离Ruleset Scope
+
+分离的规则集可以通过导入到范围中来访问。（晦涩难懂查看：https://www.w3cschool.cn/less/unlocking_will_modify_detached_ruleset_scope.html）
+
+
+
+**LESS导入指令**
+
+**@import** 伪指令用于在代码中导入文件。 它将LESS代码分布在不同的文件上，并允许轻松地维护代码的结构。可以将 *@import* 语句放在代码中的任何位置。 
+
+导入指令的导入取决不同的文件扩展名
+
+- 如果您使用 .css 扩展名，那么它将被视为CSS和 @import 语句保持不变。 
+- 如果它包含任何其他扩展名，那么它将被视为LESS并将被导入。 
+- 如果没有较少的扩展，那么它将被附加并包含为导入的较少文件。 
+
+@import指令支持导入选项，也就是在导入的时候控制导入行为，下面几个就是在import语句中实现的导入伪指令，基本的使用语法为：
+
+```less
+@import(选项) url
+```
+
+- **@import(reference)**，用于导入外部文件，但不会将导入的样式添加到编译的CSS文件中。 这是在版本1.5.0 中发布的。 
+- **@import(inline)**会将CSS复制到输出CSS文件中，而不进行处理。 当CSS文件不是LESS兼容时，这是有用的。 虽然LESS支持大多数标准CSS，但在某些地方不支持注释，并且不修改CSS，它不会支持所有已知的CSS黑客。 即使 **@import(inline)**不会处理CSS，它将确保所有的CSS将在一个文件中。 这是在版本1.5.0 中发布的。 
+- **@import(less)**会将文件导入为LESS文件，而不管文件扩展名是什么。 这是在版本1.4.0 中发布的。
+- **@import(css)**会将文件导入为常规CSS，而不管文件扩展名。 这是在版本1.4.0 中发布的。
+- **@import(css)**会将文件导入为常规CSS，而不管文件扩展名。 这是在版本1.4.0 中发布的。
+- **@import(once)**确保文件只导入一次，并且对该文件将忽略任何以下import语句。 这是 **@import**statments的默认行为。 这是在版本1.4.0 中发布的。 
+- 通过 **@import(multiple)**，您可以导入具有相同名称的多个文件。 这与一次完全相反。 这是在版本1.4.0 中发布的。 
+- **@import (optional)**可选允许您在文件不存在时导入文件。 如果要导入的文件不存在并且未使用**可选**关键字，则LESS会抛出 FileError 错误并停止编译。 这是在版本2.3.0 中发布的。 （防止错误发生导致不再编译）
+
+
+
+**LESS Mixin Guards**
+
+想在表达式上匹配简单的值或参数数量，那么你可以使用Guards。 它与mixin声明相关联，并包括附加到mixin的条件。 每个mixin将有一个或多个由逗号分隔的防护，并且guard必须括在括号中。 LESS使用Guards的mixins而不是if / else语句，并执行计算以指定匹配的mixin。 
+
+不同类型的mixins guard以及描述 :
+
+（1）LESS Guard比较运算符
+
+LESS包含五个保护比较运算符：<，>，<=，> =和=。 您可以使用比较运算符（=）来比较数字，字符串，标识符等，而剩余的运算符只能与数字一起使用。 来个示例说明一下：
+
+```less
+/*下面定义了三种情况，满足情况会执行相应的mixin*/
+.mixin (@a) when (@a = 20px){
+color:red;
+}
+.mixin (@a) when (@a < 20px){
+color:blue;
+}
+.mixin (@a) {
+  font-size: @a;
+}
+.container { .mixin(20px) }/*传入参数20px，那么将会匹配返回20px的mixin*/
+```
+
+编译后的结果为：
+
+```css
+.container {
+  color: red;
+  font-size: 20px;
+}
+```
+
+（2）Less Guard逻辑运算符
+
+可以使用关键字来解决Guard逻辑运算符。 您可以使用和关键字组合使用保护条件，并使用not关键字取消条件。 如下：
+
+```less
+.mixin (@a) when (@a > 50%) and (@a > 5px){
+  font-size: 14px;
+}
+.mixin (@a) when not (@a < 50%) and not (@a < 5px){
+  font-size: 20px;
+}
+.mixin (@a) {
+  color: @a;
+}
+.class1 { .mixin(#FF0000) }
+.class2 { .mixin(#555) }
+```
+
+（3）Less提供类型检查函数
+
+less类型检查函数用于对参数类型的检查，检查是否符合条件，有如下的检查函数：
+
+- iscolor、isnumber、isstring、iskeyword、isurl、ispixel、ispercentage、isem、isunit
+
+**Less CSS Guards**
+Guard用于匹配表达式上的简单值或参数个数。 它应用于CSS选择器。 它是用于声明mixin并立即调用它的语法。 要成功地引出 if 类型语句; 将此功能与功能＆结合使用，您可以将多个guards分组。
+
+```less
+@usedScope: global;
+.mixin() {
+  @usedScope: mixin;
+  .cont when (@usedScope=global) {
+    background-color: red;
+    color: black;
+  }
+  .style when (@usedScope=mixin) {
+    background-color: blue;
+    color: white;
+  }
+  @usedScope: mixin;
+}
+.mixin();
+```
+
+**Less 循环**
+
+Loops语句允许我们多次执行一个语句或一组语句。 当递归mixin与 **Guard表达式**和**模式匹配**组合时，可以创建各种迭代/循环结构。 下面是一个简单的例子：
+
+```less
+.cont(@count) when(@count>0){/*将会循环7次*/
+    .cont((@count - 1));/*这里的@count - 1必须中间要有空格，不然less编译器会把它解释为一个@count-1变量，因此会报找不到变量申明错误，很不科学？？？？？头大*/
+    width:(25px*@count);
+}
+div{
+    .cont(7);
+}
+```
+
+编译后的结果为：
+
+```css
+div {
+  width: 25px;width: 50px;width: 75px; width: 100px;width: 125px;width: 150px;width: 175px;
+}
+```
+
+**Less合并**
+
+它是LESS的一个特性，它允许使用单个属性从多个属性中为逗号或空格分隔列表添加值。 它可以用于背景和变换属性。如下所示：
+
+（1）less合并逗号：comma（它添加属性值到最后）
+
+```less
+.myfunc() {
+  box-shadow+: 5px 5px 5px grey;
+}
+.class {
+  .myfunc();
+  box-shadow+: 0 0 5px #f78181;
+}
+```
+
+ 编译后的结果为：
+
+```css
+.class {
+  box-shadow: 5px 5px 5px grey, 0 0 5px #f78181;
+}
+```
+
+（2）less合并空间：space（这是merge的另一个特性，它添加了属性值和空格）
+
+```less
+.mixin() {
+  transform+_: scale(1);
+}
+.class {
+  .mixin();
+  transform+_: rotate(2deg);
+}
+/*合并使用 + 或 + _ 标志来避开每个连接上意外的连接。 transform 属性修改CSS格式化模型的空间，并可用于旋转，缩放，移动等元素。*/
+```
+
+编译后的结果为：
+
+```css
+.class {
+  transform: scale(1) rotate(2deg);
+}
+```
+
+
+
+**最后的一部分就是LESS函数了**
+
+Less提供了很多的函数供使用，大致分为了
+
+- 字符串函数：
+
+  （1）escapse（逃逸）：它通过对特殊字符使用URL编码来对字符串或信息进行编码。 您无法编码一些字符，例如**，**， **/** ，**？** ，**@** ，**＆amp;** ， **+** ，**〜**，**！** ， **$** ，**\'**和您可以编码的一些字符，例如 **\\** ，**#**， **> ^** ，**(**，**)**， **{**，**}** ，**:** >，**＆gt;** ，**，] ， [和 = 。** 
+
+  （2）e ：它是一个字符串函数，它使用string作为参数，并返回不带引号的信息。它是一个CSS转义，它使用*〜“一些内容"*转义的值和数字作为参数。 
+
+  （3）% format ：此函数格式化一个字符串。 它可以写成以下格式:  %(string，arguments ...)  
+
+  （4）replace：它用于替换字符串中的文本。 它使用一些参数： 
+
+  - **string** :它搜索字符串并替换。
+  - **pattern** :它搜索正则表达式模式。
+  - **replacement** :它替换与模式匹配的字符串。
+  - **flags** :这些是可选的正则表达式标志。
+
+- 列表函数：**Length** 、Extract
+
+- 数学函数：**ceil** 、**floor** 、**percentage** 、**round** 、**sqrt** 、**abs** 、**sin** 、**asin**  、**cos**  、**acos**  、**tan**  、**atan** 、**pi**  、 **pow**  、**mod**  、**min** 、**max** 
+
+- 类型函数：**isnumber**  、**isstring** 、**iscolor**  、**iskeyword** 、**isurl**  、**ispixel** 、**isem**  、**ispercentage** 、**isunit**  、**isruleset** 
+
+- 颜色定义函数：**rgb**  、**rgba**  、**argb**  、**hsl**  、**hsla**  、**hsv**  、**hsva** 
+
+- 颜色通道函数：**hue**  、saturation 、**lightness** 、**hsvhue**  、**hsvsaturation**  、**hsvvalue**  、**red** 、**green** 、**blue** 、**alpha** 、**luma**  、**luminance** 
+
+- 颜色操作：**saturate** 、**desaturate**  、**lighten** 、 **darken**、 **fadein、**  **fadeout、**  **fade、** **spin** 、**mix** 、 **tint** 、**shade** 、**greyscale**、 **contrast** 
+
+- 颜色混合函数：**multiply** 、**screen**、 **overlay、** **softlight、** **hardlight** 、**difference**、 **exclusion** 、**average**、  **negation** 
+
+- 其它函数：**color** 、[**image - size** ](https://www.w3cschool.cn/less/image_size.html)、 [**image - width** ](https://www.w3cschool.cn/less/image_width.html) 、**image-height** 、**convert****data - uri** 、 **default** **unit**  [**get - unit** ](https://www.w3cschool.cn/less/get_unit.html) 、[**svg - gradient**](https://www.w3cschool.cn/less/svg_gradient.html)
