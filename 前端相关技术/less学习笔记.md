@@ -547,3 +547,41 @@ p{
 p{color:red;}
 ```
 
+（5）LESS !important 关键字
+
+**！important** 关键字用于覆盖特定属性。 当它在mixin调用之后放置时，它会将所有继承的属性标记为！important 。 
+
+```less
+.mixin(){
+  color: #900;
+  border:1px solid red;
+}
+.para1{
+  .mixin();
+}
+.para2{
+  .mixin() !important;
+}
+```
+
+编译后的结果为：
+
+```css
+.para1{
+  color:#900;18581203068
+  border:1px solid red;
+}
+.para2{
+  color:#900 !important;
+  border:1px solid red !important;
+}
+```
+
+**Less混合参数**
+
+参数可以使用*逗号*或*分号*分隔。 使用逗号符号，可以将其解释为mixin参数分隔符或css列表分隔符。 如果在mixin中使用分号，那么它将用分号分隔参数，CSS列表将包含所有逗号。两种使用方式如下：
+
+- 如果你有两个参数，那么它将包含使用逗号分隔的列表。例如：.class1(1,2,3;somtext,other ting)
+- 如果有三个参数，并且只包含数字，例如：.class1(1,2,3)
+- 您可以使用带有逗号分隔列表的虚拟分号，例如 **.class1(1，2，3;)**。 
+- 有逗号分隔的默认值。 例如 **.class1(@color：gray，green;)** 
