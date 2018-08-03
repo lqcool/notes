@@ -2,7 +2,7 @@
 
 BEM：Block（块） Element（元素） Modfier（修饰符），是由**Yandex团队**提出的一种**前端命名方法论**。根据这个规范，能够创建出可以复用的前端组件和前端代码。（BEM是一个高可用、强大的、简单易用的命名规范）
 
-编程方法论中常见的一个就是面向对象编程（OOP），这种方法用在了许多的语言中。BEM和OOP类似的，是用代码和一系列模式来描述实际情况的方法，只考虑程序实体而无所谓使用什么编程语言。（摘自https://www.w3cplus.com/css/bem-definitions.html）
+编程方法论中常见的一个就是面向对象编程（OOP），这种方法用在了许多的语言中。BEM和OOP类似的，是用代码和一系列模式来描述实际情况的方法，只考虑程序实体而无所谓使用什么编程语言。（摘自https://www.w3cplus.com/css/bem-definitions.html）命名规范
 
 ### Why Choose BEM?
 
