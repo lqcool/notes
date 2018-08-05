@@ -70,7 +70,7 @@ clear是如何清除浮动的？
 
 
 
-通过BFC清除浮动
+通过BFC清除浮动（[BFC](https://www.w3cplus.com/css/understanding-css-layout-block-formatting-context.html )）
 
 BFC（Block Format Context ：块级格式化上下文），它是按照块级盒子布局的。我们了解他的特征、触发方式、常见使用场景这些就够了。
 
@@ -84,8 +84,10 @@ BFC（Block Format Context ：块级格式化上下文），它是按照块级�
 
 BFC的特征
 
+**可以将BFC看作是一个页面中的迷你布局，一旦创创建了一个BFC它其中的所有元素都会被它包裹。** 正如我们所见的，当盒子变成BFC之后，它内部的浮动元素就再也不可能突破它的底部（也就是说，盒子不再会因内部元素浮动而坍塌）。[BFC](https://www.w3cplus.com/css/understanding-css-layout-block-formatting-context.html ),除了这个以外，还有另外一个功能，BFC可以阻止外边距的叠加，一个BFC会停止去围绕浮动元素。如果一个元素创建了BFC，它就不会去围绕（或者说包裹）任何浮动元素。所以BFC的特点如下：
+
 - BFC容器是一个隔离的容器，和其他元素互不干扰；所以我们可以用触发两个元素的BFC来解决垂直边距折叠问题。 
--  BFC可以包含浮动；通常用来解决浮动父元素高度坍塌的问题。 
+-  BFC的一个特性是可以包含浮动；通常用来解决浮动父元素高度坍塌的问题。 
 
 其中，BFC清除浮动就是用的“包含浮动”这条特性。 那么，怎样才能触发BFC呢？ 
 
