@@ -7,6 +7,18 @@
 > config --global user.email "youEmail@xx.com" git config
 > 命令的--global参数，表示这台机器上面的所有GIT仓库都会使用这个配置，也可一对某个指定的仓库使用不同的用户名和Email地址。
 
+//查看配置信息，要检查已有的配置信息，可以使用
+
+ `git config --list`
+
+也可以直接查看某个环境变量的设定（只需要把特定的名字跟在后面）
+
+git config user.name
+
+要了解git各式工具怎么用，可以阅读使用帮助，例如查看config 命令怎么使用
+
+git help config
+
 //查看git bash版本
 
 > git version 
@@ -75,9 +87,9 @@
 
 > git diff 
 
-//查看已经暂存起来的变化
+//查看已经暂存起来的变化（比较的是工作目录中和暂存区域快照之间的差异）
 
-> git diff --cached
+> git diff --cached（高版本支持git diff --staged）
 
 //显示从最近到最远的提交日志，查看历史记录
 
