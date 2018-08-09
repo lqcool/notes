@@ -19,9 +19,7 @@ git config user.name
 
 git help config
 
-//查看git bash版本
-
-> git version 
+git version 
 
 //创建文件夹
 
@@ -29,7 +27,42 @@ git help config
 
 //显示当前目录
 
-> pwd
+pwd
+
+
+
+```shell
+###安装篇
+####1：windows上面使用git直接到官网下载git安装程序，完成后开始菜单中git->git bash如果能弹出，安装成功。
+####2：自报家门，打开git bash，然后配置用户名和邮箱（github注册的）
+####命令的--global参数，表示这台机器上面的所有GIT仓库都会使用这个配置，也可一对某个指定的仓库使用不同的用户名和Email地址。
+git config --global user.name "Your Name"  
+git config --global user.email "youEmail@xx.com" git config
+####查看配置信息，要检查已有的配置信息，可以使用
+git config --list
+####也可以直接查看某个环境变量的设定（只需要把特定的名字跟在后面）
+git config user.name
+####要了解git各式工具怎么用，可以阅读使用帮助，例如查看config 命令怎么使用
+git help config
+####查看git bash版本
+git version
+
+
+###命令篇
+####创建文件夹
+mkdir directoryName
+####显示当前目录命令
+pwd
+####显示文件内容
+cat fileName
+####清空git暂存区
+git rm -r --cached
+####打开文件并编辑（打开编辑器）
+vi fileName （或者 vim 文件名称）
+
+```
+
+
 
 //查看文件
 
