@@ -224,6 +224,14 @@ git fsck --lost-found  //找回git add过但是已经不存在文件中的内容
 
 `git branch`
 
+要从该分支清单中列出已经（或者尚未）与当前分支合并的分支，使用`--merged`和`--no-merged`选项，如查看哪些分支已经并入当前分支（也就是哪些分支是当前分支的直接上游）使用
+
+`git branch --merged`
+
+查看尚未合并到当前分支的分支使用（这些分支运行`git branch -d branchName`是无法删除的，因为没有合并，数据会丢失，要强制删除分支使用`git branch -D branchName`）
+
+`git branch --no-merged`
+
 48.查看当前详细分支信息（可看到当前分支与对应的远程追踪分支）
 
 `git branch -vv `
