@@ -172,13 +172,33 @@
 
      input：声明对stringObject的引用
 
+     ```js
+     function getQueryString(name){
+         var reg = new RegExp("(^|&)"+name+"=([^&]*)(&|$)");
+         var r = "sex=男&age=12&code=111001&age=30".match(reg);
+         if(r!=null){
+             return r[2];
+         }else{
+             return null;
+         }
+     }
+     getQueryString("age")
+     ```
+
+     对应执行后，获得的r数组中的内容（这里是没有包含全局标志g）
+
+   ![1534730615439](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/48.png)
+
    **如果全局调用**
 
    - 也就是具有标志g，match()方法将执行全局检索，找到字符串的所有匹配子字符串，没有找到返回null，否则返回一个数组
    - 数组元素中存放的是字符串中所有的匹配子串，而且也没有index属性或input属性
 
- - split()：第一个参数接收字符串也接受正则表达式
+   下面是包含全局匹配的结果。
 
+   ![1534735066173](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/49.png)
+
+ - split()：第一个参数接收字符串也接受正则表达式
  - replace()：第一个参数接收字符串也接受正则表达式，他的第二个参数可以为固定的值，也可以为一个function，就是一个回掉，当有一个匹配到了，就会调用这个回掉函数，回掉接收4个参数。
 
    - 匹配字符串

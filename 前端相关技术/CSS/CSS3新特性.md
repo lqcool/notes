@@ -2,7 +2,7 @@
 
 整理自：https://juejin.im/entry/595f1e3c5188250d914dd53c
 
-**CSS3选择器**
+####CSS3选择器
 
 - element1~element2：选择前面有element1元素的每个element2元素 
 - [attribute^=value]：选择某元素attribute属性是以value开头的 
@@ -27,7 +27,7 @@
 - E:not(selector): 选择非selector元素的每个元素 
 - E::selection: 选择被用户选取的元素部分 
 
-**CSS3动画新特性Transition,Transform和Animation**
+####CSS3动画新特性Transition,Transform和Animation
 
 （1）Transition
 
@@ -162,7 +162,7 @@ Animate中使用的属性：
 
 
 
-**CSS3新增的边框特性**
+####CSS3新增的边框特性
 
 新增的几个边框属性：
 
@@ -170,7 +170,7 @@ Animate中使用的属性：
 - box-shadow：为元素添加阴影
 - border-image：使用图片来绘制边框
 
-**CSS3新增的背景特性**
+####CSS3新增的背景特性
 
 - background-clip：用来确定背景的绘画区域，有一下几种可能的属性。
 
@@ -196,7 +196,7 @@ Animate中使用的属性：
   - background-break: bounding-box; 把盒之间的距离计算在内 
   - background-break: each-box; 为每个盒子单独重绘背景 
 
-**CSS3文字效果**
+####CSS3文字效果
 
 （1）word-wrap
 
@@ -244,11 +244,11 @@ CSS3里面开始支持对文字的更深层次的渲染，具体有三个属性�
 - text-stroke-color: 设置文字边界填充颜色
 - text-stroke-width: 设置文字边界宽度
 
-**CSS3中的渐变**
+####CSS3中的渐变
 
-CSS3提供了渐变的效果，包括线性渐变（linear-gradient）和放射性渐变（radial-gradient
+CSS3提供了渐变的效果，包括线性渐变（linear-gradient）和放射性渐变（radial-gradient）
 
-**CSS3中的@font-face特性**
+####CSS3中的@font-face特性
 
 在CSS3之前，web设计师必须使用已在用户计算机上安装好的字体。 通过CSS3，web设计师可以使用他们喜欢的任意字体。当您您找到或购买到希望使用的字体时，可将该字体文件存放到web服务器上，它会在需要时被自动下载到用户的计算机上。 
 
@@ -265,7 +265,7 @@ div{
 }
 ```
 
-**CSS3中的多列布局**
+####CSS3中的多列布局
 
 CSS3中，能够创建多个列来对文本进行布局，IE10和Opera支持多列属性。Firefox 需要前缀-moz-，Chrome和Safari需要前缀-webkit-。主要有如下三个属性： 
 
@@ -273,14 +273,48 @@ CSS3中，能够创建多个列来对文本进行布局，IE10和Opera支持多�
 - column-gap: 规定列之间的间隔。
 - column-rule: 设置列之间的宽度、样式和颜色规则
 
-**box-sizing**
+####box-sizing
 
 - content-box: padding和border不被包含在定义的width和height之内。对象的实际宽度等于设置的width值和border、padding之和，即 (Element width = width + border + padding)，此属性表现为标准模式下的盒模型。
 - border-box: padding和border被包含在定义的width和height之内。对象的实际宽度就等于设置的width值，即使定义有border和padding也不会改变对象的实际宽度，即 (Element width = width)，此属性表现为怪异模式下的盒模型。
 
-**outline-offset**
+####outline-offset
 
 outline-offset属性对轮廓进行偏移，并在超出边框边缘的位置绘制轮廓。 
+
+#### css3中auto尺寸表现有专门的属性值和其对应
+
+摘自：https://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/
+
+在CSS3中，`width:auto`多种尺寸表现有了专门的属性值进行对应。 其中就包括了`fill-available` `max-content` `min-content` `fit-content`。
+
+```css
+.ctx1{
+    width:fill-available;
+}
+.ctx2{
+    width:max-content;
+}
+.ctx3{
+    width:min-content;
+}
+.ctx4{
+    width:fit-content;
+}
+/*目前有些属性还需要加上私有前缀，如webkit*/
+```
+
+（1）fill-available：这个是块级元素的默认的方式，也就是例如直接写一个div，那么它会自动的填充可利用的空间，就是一行。`fill-available`关键字值的价值在于，我们可以让元素的100%自动填充特性不仅仅在`block`水平元素上，其他元素，例如，我们一直认为的包裹收缩的`inline-block`元素上： 
+
+```css
+div { display:inline-block; width:fill-available; }
+```
+
+此时，元素 兼具了块状元素的自动填充特性以及内联元素的定位对齐等特性 。
+
+（2）max-content：`max-content`的行为表现可以这么理解，假设我们的容器有足够的宽度，足够的空间，此时，所占据的宽度是就是`max-content`所表示的尺寸。 `width:max-content`表现得好像设置了white-space:nowrap一样，文字不会换行，元素的宽度也变成了这些文字一行显示的宽度 
+
+
 
 
 
