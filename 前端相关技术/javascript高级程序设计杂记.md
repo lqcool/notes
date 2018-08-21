@@ -1,0 +1,120 @@
+
+
+浏览器提供screenLeft、screenTop获取窗口的位置，FireFox使用screenX、screenY提供窗口的位置。
+
+```js
+var leftPos = (typeof window.screenLeft == "number") ? window.screenLeft:window.screenX;
+var topPos = (typeof window.screenTop == "number") ? window.screenTop:window.screenY;
+```
+
+浏览器提供innerWidth、innerHeight、outerWidth、outerHeight获取窗口大小信息，在Chrome中outerWidth和innerWidth相等，outerHeight和innerHeight相等，都是获取的视口的信息。而一般使用的时候，浏览器提供了document.documentElement.clientWidth和document.documentElement.clientHeight保存了视口信息（标准模式下有效）如果是混杂模式需要使用document.body.clientHeight和document.body.clientWidth获取视口大小信息。兼容写法：
+
+```js
+var pageWidth = window.innerWidth;
+var pageHeight = window.innerHeight;
+if(typeof pageWidth != "number"){
+    //判断是否处于标准模式中
+    if(document.compatMode == "CSS1Compat"){
+        pageWidth = document.documentElement.clientWidth;
+        pageHeight = document.documentElement.clientHeight;
+    }else{//混杂模式（非标准模式）
+        pageWidth = document.body.clientWidth;
+        pageHeight = document.body.clientHeight;
+    }
+}
+```
+
+检测浏览器窗口的屏蔽，如果是浏览器内置的屏蔽程序阻止的弹出窗口，那么window.open()很可能返回一个null，如果是其它的扩展程序或者其它程序阻止的弹出窗口，window.open()通常返回一个错误。可以使用下面的代码进行检查：
+
+```js
+var blocked = false;
+try{
+    var wroxWin = window.open("http://www.lqxx.com","_blank");
+    if(wroxWin == null){
+        blocked = true;
+    }
+}catch(ex){
+    blocked = true;
+}
+if(blocked){
+    alert("弹窗被屏蔽了！");
+}
+```
+
+获取地址栏参数的方法
+
+```js
+function getQueryString(name){
+    var reg = new RegExp("(^|&)"+name+"=([^&]*)(&|$)");
+    var r = window.location.sreach.substr(1).match(reg);
+    if(r!=null){
+        return unescape(r[2]);
+    }else{
+        return null;
+    }
+}
+```
+
+检测DOM的一致性
+
+DOM分为多个级别，同时也包含多个部分，因此检测浏览器实现了DOM的哪些部分就十分重要。`document.implementation`属性就是为此提供相应信息和功能的对象，于浏览器对DOM的实现直接对应。DOM1级只为`document.implementation`规定了一个方法，也就是`hasFeature()`，接收两个参数：要检测的DOM功能的名称和版本号。如果浏览器支持给定名称和版本的功能，方法返回true。在DOM2级中又新增了一个方法，叫做`createHTMLDocument()`，这个方法返回一个完整的HTML文档，包括html、head、title、body等
+
+```js
+var hasXmlDom = document.implementation.hasFeature("XML","1.0");
+```
+
+元素的遍历
+
+对于元素之间的空格，IE9以及之前的版本不会返回文本节点，而其它所有浏览器都会返回文本节点。这样使得childNodes和firstChild等属性行为不一致。为了弥补差异，Element Traversal规范定义了一组新属性。
+
+- `childElementCount`：返回子元素的个数（不包括文本节点和注释）的个数
+- `firstElementChild`：指向第一个子元素；firstChild的元素版
+- `lastElementChild`：指向最后一个子元素；lastChild的元素版
+- `previousElementSibling`：指向前一个同辈元素，previousSibling的元素版
+- `nextElementSibling`：指向后一个同辈元素，nextSibling的元素版
+- 
+
+操作类名
+
+以前操作类名是获取`dom`，然后获取对象的className属性的值，然后分割，然后取值。很麻烦，`html5`提供了`classList`属性，这个属性是新集合`DOMTokenList`的实例，与其他的`DOM`集合类似。`DOMTokenList`有一个表示自己包含多少元素的length属性，取得每个元素可以使用`item()`，也可以使用`[]`语法取值，此外还定义了一些新的方法
+
+- add(value)：将给定的字符串值添加到列表中，如果值已经存在，不在添加
+- contains(value)：表示列表中是否存在给定的值，如果存在返回true，反之返回false
+- remove(value)：从列表中删除给定的字符
+- toggle(value)：如果列表中已经存在给定的值，删除它，如果没有，添加它。
+
+```js
+//例如为dom添加class，或者移除class
+element.classList.add("classnnx");
+```
+
+兼容模式
+
+检查页面渲染的模式是标准模式还是混杂模式，检查页面的兼容模式成为浏览器的必要功能
+
+```js
+//标准模式下
+if(document.compatMode === "CSS1Compat"){
+    alert("standards mode");
+}
+//混杂模式 document.mode === "BackCompat"
+else{
+    alert("quirks mode");
+}
+```
+
+html5规定可以微元素添加自定义属性（非标准属性），但要夹data前缀，添加的自定义属性可以通过元素的dataset属性来访问自定义属性的值。dataset属性的值是DOMStringMap的一个实例，也就是一个名值对的映射。在dataset中去掉了data的前缀
+
+```html
+<div id = "muDIV" data-appId="123450" data-myname="LQ"></div>
+```
+
+```js
+var div = document.getElmentById("myDIV");
+//取得自定义的属性
+var appId = div.dataset.appId;
+var myname = div.dataset.myname;
+//设置值
+div.dataset.appId = 1243;
+div.dataset.myname = "jone";
+```
