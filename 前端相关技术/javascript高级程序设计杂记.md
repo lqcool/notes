@@ -118,3 +118,43 @@ var myname = div.dataset.myname;
 div.dataset.appId = 1243;
 div.dataset.myname = "jone";
 ```
+
+IE中的事件和其它浏览器事件中的相关操作
+
+```js
+//其它浏览器中阻止时间的默认行为是调用event对象的preventDefault()，IE中是设置event的returnValue值为true
+event.preventDefault();/*The others*/
+event.returnValue = true;/*IE*/
+//其它浏览器中阻止事件的冒泡是调用event对象的stopPropagation()，IE中是设置event的cancelBubble值为true
+event.stopPropagation();/*The others*/
+event.cancelBubble = true;/*IE*/
+//IE中的目标属性是srcElement，而其它的是target
+var dom = event.srcElement||event.target;
+```
+
+javaScript中的有的事件不冒泡，比如：
+
+- blur、focus、mouseenter、mouseleave
+
+只有在同一个元素中相继触发mousedown和mouseup事件，才会触发click事件，如果其中一个被取消了，那么就不会触发click事件。鼠标点击事的触发顺序为
+
+```js
+mousedown->mouseup->click->mousedown->mouseup->click->dbclick
+```
+
+检测六浏览器是否支持所有DOM3级事件，可以使用特性检测，如下
+
+```js
+var isSupported = document.implementation.hasFeature("MouseEvent","3.0");
+//注意在检查是否支持DOM2级事件，是使用MouseEvents，多了个s
+var isSupported = document.implementation.hasFeature("MouseEvents","2.0");
+//附：检查浏览器是否支持焦点事件，使用
+var isSupported = document.implementation.hasFeature("FocusEvent","3.0");
+```
+
+鼠标事件发生的位置都保存在事件对象event中
+
+- clientX和clientY：这两个值指的是发生事件的位置距离视口的水平和垂直距离，视口指的是去掉滚动条和边框与工具栏
+- pageX和pageY：这两个值是指出发生事件的坐标的页面位置，就是坐标是从页面本身而非视口左边和顶边计算的。
+- screenX和screenY：这两个值指出发生时间的坐标位置相对于整个屏幕的位置，也就是显示屏。
+
