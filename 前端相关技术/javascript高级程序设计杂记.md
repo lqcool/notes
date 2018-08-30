@@ -158,3 +158,34 @@ var isSupported = document.implementation.hasFeature("FocusEvent","3.0");
 - pageX和pageY：这两个值是指出发生事件的坐标的页面位置，就是坐标是从页面本身而非视口左边和顶边计算的。
 - screenX和screenY：这两个值指出发生时间的坐标位置相对于整个屏幕的位置，也就是显示屏。
 
+DOM为某些键定义了对应的事件属性，包括Shift、Ctrl、Alt和Meta（在Windows中为Windows键，Mac中为Cmd键），通过检查这四个属性，检测他们的属性值是否为true从而判断是否被按下
+
+```js
+//在event事件中，定义了四个属性shiftKey、ctrlKey、altKey和metaKey。如果这些值是true那么代表他们表示的键被按下了
+dom.onclick = function(event){
+    var event = event||window.event;
+    if(event.shiftKey){
+       //shiftKey被按了
+    }
+    if(event.ctrlKey){
+       // ..
+    }
+    ...
+}
+```
+
+对鼠标按钮的反应，事件对象的button属性，对于mousedown是表示按下了哪一个，对于mouseup表示释放了哪一个。
+
+- 0：表示没有按下按钮
+- 1：表示按下主按钮
+- 2：表示按下次按钮
+- 3：主次按钮同时按下
+- 4：表示按下中间按钮
+- 5：同时按下朱按钮和中间按钮
+- 6：次按钮和中间按钮
+- 7：三个按钮同时按下
+
+与鼠标滚动事件相关的是mousewheel事件，事件里面有一个wheelData属性，向前滚动wheelData是120的倍数，向后滚动是-120的倍数
+
+
+
