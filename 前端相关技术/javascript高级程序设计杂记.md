@@ -1,13 +1,13 @@
 
 
-浏览器提供screenLeft、screenTop获取窗口的位置，FireFox使用screenX、screenY提供窗口的位置。
+1、浏览器提供screenLeft、screenTop获取窗口的位置，FireFox使用screenX、screenY提供窗口的位置。
 
 ```js
 var leftPos = (typeof window.screenLeft == "number") ? window.screenLeft:window.screenX;
 var topPos = (typeof window.screenTop == "number") ? window.screenTop:window.screenY;
 ```
 
-浏览器提供innerWidth、innerHeight、outerWidth、outerHeight获取窗口大小信息，在Chrome中outerWidth和innerWidth相等，outerHeight和innerHeight相等，都是获取的视口的信息。而一般使用的时候，浏览器提供了document.documentElement.clientWidth和document.documentElement.clientHeight保存了视口信息（标准模式下有效）如果是混杂模式需要使用document.body.clientHeight和document.body.clientWidth获取视口大小信息。兼容写法：
+2、浏览器提供innerWidth、innerHeight、outerWidth、outerHeight获取窗口大小信息，在Chrome中outerWidth和innerWidth相等，outerHeight和innerHeight相等，都是获取的视口的信息。而一般使用的时候，浏览器提供了document.documentElement.clientWidth和document.documentElement.clientHeight保存了视口信息（标准模式下有效）如果是混杂模式需要使用document.body.clientHeight和document.body.clientWidth获取视口大小信息。兼容写法：
 
 ```js
 var pageWidth = window.innerWidth;
@@ -24,7 +24,7 @@ if(typeof pageWidth != "number"){
 }
 ```
 
-检测浏览器窗口的屏蔽，如果是浏览器内置的屏蔽程序阻止的弹出窗口，那么window.open()很可能返回一个null，如果是其它的扩展程序或者其它程序阻止的弹出窗口，window.open()通常返回一个错误。可以使用下面的代码进行检查：
+3、检测浏览器窗口的屏蔽，如果是浏览器内置的屏蔽程序阻止的弹出窗口，那么window.open()很可能返回一个null，如果是其它的扩展程序或者其它程序阻止的弹出窗口，window.open()通常返回一个错误。可以使用下面的代码进行检查：
 
 ```js
 var blocked = false;
@@ -41,7 +41,7 @@ if(blocked){
 }
 ```
 
-获取地址栏参数的方法
+4、获取地址栏参数的方法
 
 ```js
 function getQueryString(name){
@@ -55,7 +55,7 @@ function getQueryString(name){
 }
 ```
 
-检测DOM的一致性
+5、检测DOM的一致性
 
 DOM分为多个级别，同时也包含多个部分，因此检测浏览器实现了DOM的哪些部分就十分重要。`document.implementation`属性就是为此提供相应信息和功能的对象，于浏览器对DOM的实现直接对应。DOM1级只为`document.implementation`规定了一个方法，也就是`hasFeature()`，接收两个参数：要检测的DOM功能的名称和版本号。如果浏览器支持给定名称和版本的功能，方法返回true。在DOM2级中又新增了一个方法，叫做`createHTMLDocument()`，这个方法返回一个完整的HTML文档，包括html、head、title、body等
 
@@ -63,16 +63,38 @@ DOM分为多个级别，同时也包含多个部分，因此检测浏览器实�
 var hasXmlDom = document.implementation.hasFeature("XML","1.0");
 ```
 
-元素的遍历
+6、DOM扩展中新增的选择符API
 
-对于元素之间的空格，IE9以及之前的版本不会返回文本节点，而其它所有浏览器都会返回文本节点。这样使得childNodes和firstChild等属性行为不一致。为了弥补差异，Element Traversal规范定义了一组新属性。
+- querySelector()：接收一个CSS选择符，返回与该模式匹配的第一个元素，如果没有找到匹配的元素，返回null。
+- querySelectorAll()：和上面的接收同样的参数，返回匹配的所有元素，不是一个元素，是NodeList的实例，没有找到，那么返回的NodeList是空的，
+
+7、元素的遍历
+
+对于元素之间的空格，IE9以及之前的版本不会返回文本节点，而其它所有浏览器都会返回文本节点。这样使得childNodes和firstChild等属性行为不一致。为了弥补差异，Element Traversal规范定义了一组新属性。通过是使用下面的这些属性，就不用再去检查获取的元素是否为元素节点了。
 
 - `childElementCount`：返回子元素的个数（不包括文本节点和注释）的个数
 - `firstElementChild`：指向第一个子元素；firstChild的元素版
 - `lastElementChild`：指向最后一个子元素；lastChild的元素版
 - `previousElementSibling`：指向前一个同辈元素，previousSibling的元素版
 - `nextElementSibling`：指向后一个同辈元素，nextSibling的元素版
-- 
+
+8、DOM扩展时新增的一些API（HTML5扩展）
+
+- getElementByClassName()：通过类名查找元素，传入一个或多个类名，返回包含类名的元素，一个NodeList
+
+- 在节点中新增classList属性，并为该属性新增了一些方法，add、remove、contain、toggle用于操作类名
+
+- document.activeElement：始终引用当前获得焦点的元素，通过新增的方法document.hasFocus()方法检查文档是否获得了焦点
+
+- 扩展了HTMLDocument，引入readyState属性，包括两个值，loading表示文档正在加载中，complete表示文档已经加载完毕。
+
+  ```js
+  if(document.readyState=="complete"){alert("文档加载完毕")}
+  ```
+
+- 新增head属性，引用\<head\>标签
+
+- 新增几个字符集属性，包括charset属性，表示文档中实际使用的字符，也可以用于设置新的字符。document.charset，defaultCharset表示默认设置
 
 操作类名
 
@@ -186,6 +208,19 @@ dom.onclick = function(event){
 - 7：三个按钮同时按下
 
 与鼠标滚动事件相关的是mousewheel事件，事件里面有一个wheelData属性，向前滚动wheelData是120的倍数，向后滚动是-120的倍数
+
+常用的keyCode（在IE中使用的是charCode，需要兼容处理），当发送keydown和keyup事件的时候，event对象的keyCode属性包含一个代码，与键盘上面的键对应，常用的如下
+
+| 键            | 码     |
+| ------------- | ------ |
+| 退格          | 8      |
+| 制表符（tab） | 9      |
+| 回车符        | 13     |
+| Shift         | 16     |
+| Ctrl          | 17     |
+| Alt           | 18     |
+| Esc           | 27     |
+| 数字小键盘    | 96-105 |
 
 
 
