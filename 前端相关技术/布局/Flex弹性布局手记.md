@@ -86,6 +86,8 @@
 
   它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。
 
+  如果项目的width属性和flex-basis属性同时存在，flex-basis的优先级较高，如果flex-basis和width其中有一个是auto，那么另外一个非auto的属性优先级会更高。
+
 - flex：属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
 
   ```css
