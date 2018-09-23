@@ -46,3 +46,11 @@ https://blog.csdn.net/u011292870/article/details/46664993
 
 
 
+#### z-index
+
+z-index属性是可以控制定位元素在垂直于屏幕也就是轴方向上面的叠层顺序，值大的元素发生重叠时会在值小的元素上面。
+
+z-index属性只能在position属性值为relative或者absolute或者fixed的元素上有效
+
+
+
