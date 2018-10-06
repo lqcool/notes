@@ -2,6 +2,8 @@ grandle是基于Apache Ant和Apache Maven概念的项目自动化构建工具。
 
 Gradle构建脚本文件用来处理两件事情：一个是项目和另一个的任务。简单地说，一个项目是由不同的任务组成。一个任务是指构建执行的一块工作。任务可能是编译一些类，创建一个`JAR`，产生的`Javadoc`或发布一些归档文件库。
 
+### 任务 task
+
 Groovy语言基本用法：<<语法是doLast的快捷指定方式，也可以不用
 
 ```groovy
@@ -30,4 +32,21 @@ task groovyJDKMethod << {
 }
 
 ```
+
+### 任务依赖关系
+
+可以声明依赖于其他任务的任务。如下所示：下面定义的任务taskX依赖于任务taskY
+
+```groovy
+task taskX(dependsOn: 'taskY') << {
+    println "taskX"
+}
+task taskY << {
+    println "taskY"
+}
+```
+
+### 定位任务
+
+如果要查找构建在文件中的定义任务，则必须使用标准的项目属性，这意味着每个任务都可以作为项目的属性，使用任务名称作为项目的属性。示例如下所示：
 
