@@ -51,7 +51,7 @@ repositories{
 ```groovy
 apply plugin:'maven'
 uploadArchives{
-    repositories{
+    repositories{ 
         mavenDeployer{
             repository(url:"file://localhost/tmp/myRepo/")
         }
