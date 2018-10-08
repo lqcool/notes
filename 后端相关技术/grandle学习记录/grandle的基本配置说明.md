@@ -20,7 +20,7 @@ dependencies {
 - 测试编译 - 编译项目测试源所需的依赖项。 默认情况下，它包括编译的产生的类和编译时的依赖。
 - 测试运行时 - 运行测试所需的依赖关系。 默认情况下，它包括运行时和测试编译依赖项。
 
-**外部依赖：** 外部依赖是一种依赖。 这是对当前构建之外构建的一些文件的依赖，并且存储在某种类型的存储库中，例如：[Maven](http://www.yiibai.com/maven/) central，corporate Maven或lvy repository或本地文件系统中的目录。如下定义外部依赖：
+**外部依赖：** 外部依赖是一种依赖。 这是对 当前构建之外构建的一些文件的依赖，并且存储在某种类型的存储库中，例如：[Maven](http://www.yiibai.com/maven/) central，corporate Maven或lvy repository或本地文件系统中的目录。如下定义外部依赖：
 
 ```groovy
 dependencies{

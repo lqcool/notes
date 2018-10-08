@@ -12,6 +12,10 @@
 
 （3）git config 命令的--global参数，表示这台机器上面的所有GIT仓库都会使用这个配置，也可一对某个指定的仓库使用不同的用户名和Email地址。
 
+（4）git本地生产公钥和私钥rsa（生产好后，直接将本地的公钥配置在github的设置中的ssh配置中，实现免密码推送）
+
+`ssh-keygen -t rsa -C "youEmail@xx.com"`
+
 2.查看配置信息，要检查已有的配置信息，可以使用
 
  `git config --list` 或者使用 `git config -l`
