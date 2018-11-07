@@ -81,9 +81,30 @@ Preset 的顺序则刚好相反(从最后一个逆序执行)。
 
 #### Preset
 
-Preset的配置基本和plugin差不多
+Preset的配置基本和plugin差不多，不论是Plugin还是Preset，有不少都有单独属于自己的配置项。Babel官网中的说明，**Preset**和**Stage-X**都是归属到**Plugin**里面的，只不过所覆盖的范围不同而已。其中介绍，如果需要转换ES2015（ES6）的语法，可以在.babelrc文件中的plugins选项中按需引入`check-es2015-constants`、`es2015-arrow-functions`、`es2015-block-scoped-functions`等等几十个不同作用的plugin，如下所示：
 
+```js
+// .babelrc
+{
+  "plugins": [
+    "check-es2015-constants",
+    "es2015-arrow-functions",
+    "es2015-block-scoped-functions",
+    // ...
+  ]
+}
+```
 
+Babel团队为了方便，将同属ES2015的几十个Transform Plugins集合到babel-preset-2015一个preset中，这样你只需要在`.babelrc`的`presets`加入`es2015`一个配置就可以完成全部ES2015语法的支持了：
+
+```js
+// .babelrc
+{
+  "presets": [
+    "es2015"
+  ]
+}
+```
 
 相关链接：
 
