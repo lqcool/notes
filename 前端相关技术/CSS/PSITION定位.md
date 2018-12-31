@@ -67,8 +67,3 @@ z-index属性是可以控制定位元素在垂直于屏幕也就是轴方向上�
 - 将父标签的position:relative改为position:absolute；
 - 浮动元素添加position属性（relative、absolute等）
 - 去除浮动
-
-
-
-
-
