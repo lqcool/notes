@@ -45,4 +45,26 @@
 
 
 
+3、快捷键
+
+选择一行到末尾：cmd+shif+->
+
+4、生成ssh公私钥
+
+（1）打开电脑终端
+
+（1）ls -al ～/.ssh 命令检查是否存在ssh key，如果存在，将会列出id_rsa.pub 或 id_dsa.pub文件
+
+（2）如果（2）中没有出现文件，那么直接使用 pbcopy < ~/.ssh/id_rsa.pub 命令将公钥放到剪切板，然后配置到gitlab或者github等等平台的ssh配置中
+
+（3）如果（2）中没有出现文件，那么使用ssh-keygen -t rsa -C "[your_full_name@xxxxx.com](mailto:your_full_name@xxxxx.com)" 命令生成ssh key，邮件是你的公司企业邮件， 默认会在相应路径下（/your_home_path）生成id_rsa和id_rsa.pub两个文件，此时终端会显示：
+
+Generating public/private rsa key pair.
+
+Enter file in which to save the key (/your_home_path/.ssh/id_rsa):
+
+连续回车即可，也可能会让你输入密码，密码就是你的开机密码，到此ssh key生成完成，使用pbcopy < ~/.ssh/id_rsa.pub 进行复制到剪切板，配置。
+
+
+
 更多常见的Mac系统操作：https://www.jianshu.com/p/14af11fd370a（参考）
