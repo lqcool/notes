@@ -1,0 +1,1 @@
+1、mac系统中通过执行sudo npm install，照理说用了sudo就应该有权限了，但是同样可能遇到问题也，可能会报权限错误`permission denied`，解决办法加`--unsafe-perm`。就是`sudo npm install --unsafe-perm`
