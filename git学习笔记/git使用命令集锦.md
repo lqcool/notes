@@ -1,5 +1,7 @@
 
 
+### 基础
+
 1.安装篇
 
 （1）windows上面使用git直接到官网下载git安装程序，完成后开始菜单中git->git bash如果能弹出，安装成功。	
@@ -369,7 +371,43 @@ git fsck --lost-found  //找回git add过但是已经不存在文件中的内容
 
 `git config --system --list`（查看系统配置）
 
+
+
+### 开发
+
+76.用git把单个文件退到某一个版本（经过下面3步）
+
+(1)git log filename.xxx（查看filename.xxx的提交记录【提供文件所在的路径与文件名】）
+
+git log filename.xxx 会列出一个提交日志列表，并提供commit id
+
+(2)找到需要会退的版本号：例如c9419862（只需要复制某一次commit id的前面一部分）
+
+(3)git reset c9419862 filename.xxx（把文件回退到指定的版本）
+
+77.本地修改了一堆文件（并没有使用git add 到缓存区），想放弃修改
+
+(1)git checkout — filename（放弃单个文件或者文件夹）
+
+(2)git checkout .（放弃所有的文件的修改）
+
+78.本次新增了一堆文件（并没有git add到暂存区），放弃修改
+
+(1)rm filename / rm dir -rf（单个文件/文件夹）
+
+(2)git clean -xdf（所有文件/文件夹）
+
+79.本地修改/新增了一堆文件，已经git add到暂存区，想放弃修改
+
+(1)git reset HEAD filename（单个文件/文件夹：）
+
+(2)git reset HEAD .（所有文件/文件夹：）
+
+80.本地通过git add & git commit 之后，想要撤销此次commit
+
+(1)git reset commit_id（这个id是你想要回到的那个节点，可以通过git log查看，可以只选前6位）**撤销之后，你所做的已经commit的修改还在工作区！**【参考：https://blog.csdn.net/ustccw/article/details/79068547】
+
 (2018-3-7修订)
 
-
+(2019-3-14修订)
 
