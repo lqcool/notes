@@ -48,7 +48,9 @@
 
 9.清空git暂存区
 
-`git rm -r --cached `
+`git rm -r --cached`
+
+`git rm -r --cached 文件名`(git移除对某文件的版本控制)
 
 10.打开文件并编辑（打开编辑器）
 
