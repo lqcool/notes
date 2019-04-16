@@ -4,7 +4,7 @@
 
 1.安装篇
 
-（1）windows上面使用git直接到官网下载git安装程序，完成后开始菜单中git->git bash如果能弹出，安装成功。	
+（1）windows上面使用git直接到官网下载git安装程序，完成后开始菜单中git->git bash如果能弹出，安装成功。
 
 （2）自报家门，打开git bash，然后配置用户名和邮箱（github注册的）
 
@@ -373,8 +373,6 @@ git fsck --lost-found  //找回git add过但是已经不存在文件中的内容
 
 `git config --system --list`（查看系统配置）
 
-
-
 ### 开发
 
 76.用git把单个文件退到某一个版本（经过下面3步）
@@ -408,6 +406,14 @@ git log filename.xxx 会列出一个提交日志列表，并提供commit id
 80.本地通过git add & git commit 之后，想要撤销此次commit
 
 (1)git reset commit_id（这个id是你想要回到的那个节点，可以通过git log查看，可以只选前6位）**撤销之后，你所做的已经commit的修改还在工作区！**【参考：https://blog.csdn.net/ustccw/article/details/79068547】
+
+81.查看(追踪)某一行代码的修改历史，查看某行代码是由谁写的，在那个commit中提交的
+
+(1)`git blame file_name`
+
+(2)`git blame -L 201,208 ddd.js` 这样会把ddd.js代码文件的201到208航的代码的改动记录输出(显示格式为：commitID|代码提交作者|提交时间|代码位于文件中的行数|实际代码)
+
+ 知道了commit ID，使用`git show commitID`来看更加详细的信息
 
 (2018-3-7修订)
 
