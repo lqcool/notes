@@ -16,7 +16,7 @@
 
 （4）git本地生产公钥和私钥rsa（生产好后，直接将本地的公钥配置在github的设置中的ssh配置中，实现免密码推送）
 
-`ssh-keygen -t rsa -C "youEmail@xx.com"`
+`ssh-keygen -t rsa -C "youEmail@xx.com"` 
 
 2.查看配置信息，要检查已有的配置信息，可以使用
 
