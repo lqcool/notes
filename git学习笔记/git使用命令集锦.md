@@ -139,6 +139,10 @@
 
 `git reflog`
 
+git 查看某个分支的创建时间
+
+`git reflog show --date=iso <branch-name>`
+
 29.丢弃工作区的修改（也就是回退一个文件，前面的git reset --hard ***是回退整个工作空间，慎用）
 
 `git checkout -- 文件名`
