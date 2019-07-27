@@ -70,6 +70,10 @@ Enter file in which to save the key (/your_home_path/.ssh/id_rsa):
 
 连续回车即可，也可能会让你输入密码，密码就是你的开机密码，到此ssh key生成完成，使用pbcopy < ~/.ssh/id_rsa.pub 进行复制到剪切板，配置。
 
+5、权限相关
 
+在编辑器vscode中打开工作空间，修改文件后发现每次都需要输入密码才能保存【需要sudo】，需要修改权限
+
+`sudo chown -R 当前用户 需要操作的文件夹路径`。例如`sudo chown -R liqiao  /Users/liqiao/Documents/codelife/work/vs-workspace/goods-show`
 
 更多常见的Mac系统操作：https://www.jianshu.com/p/14af11fd370a（参考）
