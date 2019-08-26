@@ -444,7 +444,15 @@ git cherry-pick <start-commit-id>^..<end-commit-id> #有"^"标志的表示把<st
 
 ```
 
+(83) git commit 参数
 
+(1)--amend参数：`git commit --amend -m "new commit message"`（--amend`参数用于撤销上一次 commit，然后生成一个新的 commit。）
+
+(2)-a参数：`git commit -am "message"`（-a参数用于先将所有工作区的变动文件，提交到暂存区，再运行`git commit`。用了`-a`参数，就不用执行`git add .`命令了。）
+
+如果没有指定提交说明，运行下面的命令会直接打开默认的文本编辑器，让用户撰写提交说明。
+
+`git commit -a`
 
 (2018-3-7修订)
 
