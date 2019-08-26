@@ -1,6 +1,6 @@
 ## 第1章 http概述
 
-![6](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/6.png)
+![6](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/6.png)
 
 ***HTTP 网络协议栈***
 
@@ -19,13 +19,13 @@
 
 ### 1.3 资源
 
-> 最简单的 Web 资源就是 Web 服务器文件系统中的静态文件。这些文件可以包含任意内容：文本文件、 HTML 文件........。资源不一定是静态文件，还可以动态的生成。![1](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/1.png)
+> 最简单的 Web 资源就是 Web 服务器文件系统中的静态文件。这些文件可以包含任意内容：文本文件、 HTML 文件........。资源不一定是静态文件，还可以动态的生成。![1](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/1.png)
 
 #### 1.3.1 媒体类型(MIME)
 
 > 1. 因特网上有数千种不同的数据类型，HTTP 仔细地给每种要通过 Web 传输的对象都打上了名为 MIME 类型 （MIME type）的数据格式标签。
 >
-> 2. 当 Web 浏览器从服务器中取回一个对象时，会去查看相关的 MIME 类型，看看它是否知道应该如何处理这个对象。大多数浏览器都可以处理数百种常见的对象类型：显示图片文件、解析并格式化HTML文件....。![2](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/2.png)
+> 2. 当 Web 浏览器从服务器中取回一个对象时，会去查看相关的 MIME 类型，看看它是否知道应该如何处理这个对象。大多数浏览器都可以处理数百种常见的对象类型：显示图片文件、解析并格式化HTML文件....。![2](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/2.png)
 >
 > 3. MIME 类型是一种文本标记，表示一种主要的对象类型和一个特定的子类型，中间由一条斜杠来分隔。
 >
@@ -39,7 +39,7 @@
 
 #### 1.3.2 URI（统一资源标识符）
 
-> 1. URI（Uniform Resource Identi?er，URI）：服务器资源名被称为统一资源标识符。在世界范围内唯一标识并定位资源。![3](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/3.png)
+> 1. URI（Uniform Resource Identi?er，URI）：服务器资源名被称为统一资源标识符。在世界范围内唯一标识并定位资源。![3](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/3.png)
 > 2. URI有两种形式：URL和URN。
 
 #### 1.3.3 URL（统一资源定位符）
@@ -48,11 +48,11 @@
 >
 > 大部分URL结构：方案+服务器Internet网址+某个资源。
 >
-> 例如：https://github.com/LQ55/notes
+> 例如：https://github.com/lqcool/notes
 >
 > - 方案：指明访问资源使用的协议类型，例子中是https协议（https://）
 > - 服务器地址：指明服务器的Internet网址，例子中就是（github.com）
-> - 资源：指明要访问的资源，例子中就是（/LQ55/notes）
+> - 资源：指明要访问的资源，例子中就是（/lqcool/notes）
 >
 > 现在大部分（几乎所有）的URI都是URL。
 
@@ -70,7 +70,7 @@
 >
 > 数据如何进行：这种通信通过名为http报文（HTTP message）的格式化数据块进行的。
 >
-> ![4](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/4.png)
+> ![4](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/4.png)
 
 #### 1.4.1 方法 
 
@@ -108,7 +108,7 @@
 >
 > HTTP响应报文：服务器发往客户端的报文。
 >
-> ![5](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/5.png)
+> ![5](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/5.png)
 
 > HTTP报文的组成：起始行+首部字段+主体
 >
@@ -140,7 +140,7 @@
 >
 > 主机名：是IP地址比较人性化的别称，通过域名服务(Domain Name Service，DNS）机制进行转换。
 >
-> ![7](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/7.png)
+> ![7](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/7.png)
 
 > 显示资源步骤：
 >

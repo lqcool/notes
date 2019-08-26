@@ -6,11 +6,11 @@
 
 >URL和URN都是URI的子集，URL 是浏览器寻找信息时所需的资源位置。
 >
->例子：https://github.com/LQ55/notes/blob/master/http%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/%E7%AC%AC1%E7%AB%A0http%E6%A6%82%E8%BF%B0.md
+>例子：https://github.com/lqcool/notes/blob/master/http%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/%E7%AC%AC1%E7%AB%A0http%E6%A6%82%E8%BF%B0.md
 >
 >- URL 的第一部分（http）是 URL 方案 （scheme）。方案可以告知 Web 客户端 怎样 访问资源。在这个例子中，URL 说明要使用 HTTPs 协议。
 >- URL 的第二部分（github.com）指的是服务器的位置。这部分告知 Web 客户端资源 位于何处 。
->- URL 的第三部分（/LQ55/notes/blob/master/http%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/%E7%AC%AC1%E7%AB%A0http%E6%A6%82%E8%BF%B0.md）是资源路径。路径说明了请求的是服务器上 哪个 特定的本地资源。
+>- URL 的第三部分（/lqcool/notes/blob/master/http%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/%E7%AC%AC1%E7%AB%A0http%E6%A6%82%E8%BF%B0.md）是资源路径。路径说明了请求的是服务器上 哪个 特定的本地资源。
 
 ###  2.2 URL语法
 
@@ -18,7 +18,7 @@
 >
 > 大多数 URL 方案的 URL 语法都建立在这个由 9 部分构成的通用格式上：（URL最要的3个部分为：方案【scheme】、主机【host】、路径【path】）
 >
-> ![8](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/8.png)
+> ![8](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/8.png)
 >
 > 通用的URL组件表：
 >
