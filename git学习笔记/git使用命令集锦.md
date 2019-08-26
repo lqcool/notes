@@ -183,10 +183,10 @@ git fsck --lost-found  //找回git add过但是已经不存在文件中的内容
 35.把本地仓库与git服务器仓库关联
 
 `git remote add 分支名称 git仓库地址`
-例子：`git remote add origin https://github.com/LQ55/gitstudy.git（名为origin）`
+例子：`git remote add origin https://github.com/lqcool/gitstudy.git（名为origin）`
 本地仓库与github仓库的origin分支建立关联例子：
 
-`git remote add gitteee https://github.com/LQ55/gitstudy.git(名字为gitteee)`
+`git remote add gitteee https://github.com/lqcool/gitstudy.git(名字为gitteee)`
 
 36.把本地库的内容推送到远程，用git push命令，实际上就是把当前分支master推送到远程
 

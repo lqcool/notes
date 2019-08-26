@@ -14,7 +14,7 @@
 >
 > **对等连接方式** (peer to peer)：指的是两个主机在通信的时候**不区分哪一个是服务请求方还是服务提供方**。只要两个主机都运行这p2p软件（对等连接软件），它们就可以进行平等的，对等的通信。双方都可以下载已经存储在硬盘中的共享文档，这种方式也叫做**P2P文件共享** 。
 >
-> ![33](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/33.png)
+> ![33](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/33.png)
 
 4、英特网的核心部分
 
@@ -29,6 +29,6 @@
 >
 > **分组交换**：分组交换采用存储转发技术。分组是将长报文进行切割成一段段等长的数据段，然后在每个数据段前面加上必要的控制信息，例如目的地址、源地址等，就这样就形成了一个分组。
 >
-> ![34](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/34.png)
+> ![34](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/34.png)
 >
 > 

@@ -43,7 +43,7 @@
 
  异步操作的图示如下：
 
- ![42](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/42.png)
+ ![42](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/42.png)
 
  从图中可以看出：**异步过程的回调函数，一定不会在当前这一轮事件循环中执行。** （这里有点迷糊，如果消息队列中只有当前一个异步回调函数的话呢？）
 

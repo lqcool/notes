@@ -202,7 +202,7 @@ exec() 方法用于检索字符串中的正则表达式的匹配。调用的语�
 
      对应执行后，获得的r数组中的内容（这里是没有包含全局标志g）
 
-   ![1534730615439](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/48.png)
+   ![1534730615439](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/48.png)
 
    **如果全局调用**
 
@@ -211,7 +211,7 @@ exec() 方法用于检索字符串中的正则表达式的匹配。调用的语�
 
    下面是包含全局匹配的结果。
 
-   ![1534735066173](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/49.png)
+   ![1534735066173](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/49.png)
 
  - split()：第一个参数接收字符串也接受正则表达式
  - replace()：第一个参数接收字符串也接受正则表达式，他的第二个参数可以为固定的值，也可以为一个function，就是一个回掉，当有一个匹配到了，就会调用这个回掉函数，回掉接收4个参数。
