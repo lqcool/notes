@@ -419,6 +419,33 @@ git log filename.xxx 会列出一个提交日志列表，并提供commit id
 
  知道了commit ID，使用`git show commitID`来看更加详细的信息
 
+82.将开发分支的部分功能合并到稳定的分支。例如，假设我们有个稳定版本的分支，叫v2.0，另外还有个开发版本的分支v3.0，我们不能直接把两个分支合并，这样会导致稳定版本混乱，但是又想增加一个v3.0中的功能到v2.0中
+
+用法：`git cherry-pick <commit id>` 注意：当执行完成cherry-pick后，将会生成一个新的提交，这个新的提交的hash值和原来的不同，但是标志名一样。
+
+**例如：**
+(1)`git checkout v2.0`（切换到要稳定分支）
+
+(2)`git log`（查看提交的commit-id）
+
+(3)`git cherry-pick 38361a55`（这个 38361a55 号码，位于v3.0分支中。执行完成后，会将v3.0中的提交id为38361a55的合并到v2.0稳定版本中）
+
+命令集合：
+
+```bash
+git cherry-pick --continue
+git cherry-pick --quit
+git cherry-pick --abort
+git cherry-pick <commit id> #:单独合并一个提交
+git cherry-pick -x <commit id>#：同上，不同点：保留原提交者信息。
+#Git从1.7.2版本开始支持批量cherry-pick，就是一次可以cherry-pick一个区间的commit。
+git cherry-pick <start-commit-id>..<end-commit-id> #把<start-commit-id>到<end-commit-id>之间(左开右闭，不包含start-commit-id)的提交cherry-pick到当前分支
+git cherry-pick <start-commit-id>^..<end-commit-id> #有"^"标志的表示把<start-commit-id>到<end-commit-id>之间(闭区间，包含start-commit-id)的提交cherry-pick到当前分支
+
+```
+
+
+
 (2018-3-7修订)
 
 (2019-3-14修订)
