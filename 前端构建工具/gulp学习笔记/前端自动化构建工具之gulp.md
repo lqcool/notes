@@ -1,6 +1,6 @@
 ## GULP
 
-gulp能够做什么东西？（以前这些工作都是人工做的）
+（1）gulp能够做什么东西？（以前这些工作都是人工做的）
 
  - 检查JavaScript
  - 编译Sass（或Less之类的）文件
@@ -17,17 +17,47 @@ gulp能够做什么东西？（以前这些工作都是人工做的）
 
  等等。。
 
-gulp的配置文件**gulpfile.js**（其实整个gulp的配置文件，基本上都是在做一些任务的配置，比如创建任务，监听任务等等）
+（2）gulp的配置文件**gulpfile.js**（其实整个gulp的配置文件，基本上都是在做一些任务的配置，比如创建任务，监听任务等等）
+
+（3）gulp任务分为
+
+- **公有任务(public tasks)**：从 gulpfile 中被导出（export），可以通过 `gulp` 命令直接调用。
+- **私有任务（Private tasks）** 被设计为在内部使用，通常作为 `series()` 或 `parallel()` 组合的组成部分。
+
+```js
+const { series } = require('gulp');
+// `clean` 函数并未被导出（export），因此被认为是私有任务（private task）。
+// 它仍然可以被用在 `series()` 组合中。
+function clean(cb) {
+  // body omitted
+  cb();
+}
+// `build` 函数被导出（export）了，因此它是一个公开任务（public task），并且可以被 `gulp` 命令直接调用。
+// 它也仍然可以被用在 `series()` 组合中。
+function build(cb) {
+  // body omitted
+  cb();
+}
+exports.build = build;
+exports.default = series(clean, build);
+```
 
  结合gulp的API https://www.gulpjs.com.cn/docs/api/
 
- gulp只有5个方法
+ （4）gulp的一些方法[旧版本]
 
  - task：这个API用来创建任务，在命令行下可以输入gulp test来执行test的任务
  - run：这个API用来运行任务
  - watch：这个API用来监听任务
  - src：这个API设置需要处理的文件路径，可以是多个文件以数组的形式[main.scss,vender.scss]，也可以是正在表达式/*.scss
  - dest：这个API设置生成文件的路径，一个任务可以有多个生成路径，一个可以输出未压缩的版本，一个可以输出压缩后的版本
+
+（5）gulp中的部分方法[新版本] 参考：https://www.gulpjs.com.cn/docs/api/
+
+Gulp 提供了两个强大的组合方法： `series()` 和 `parallel()`，允许将多个独立的任务组合为一个更大的操作。这两个方法都可以接受任意数目的任务（task）函数或已经组合的操作。`series()` 和 `parallel()` 可以互相嵌套至任意深度。
+
+- 如果需要让任务（task）按顺序执行，请使用 `series()` 方法。
+- 对于希望以最大并发来运行的任务（tasks），可以使用 `parallel()` 方法将它们组合起来。
 
 gulp的使用：
 
@@ -151,7 +181,7 @@ gulp的使用：
 
  我的项目结构如下：
 
- ![41](https://github.com/LQ55/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/41.png)
+ ![41](https://github.com/lqcool/notes/blob/master/%E4%BB%93%E5%BA%93%E5%9B%BE%E5%BA%93/41.png)
 
  上述完成编写以后就是运行命令进行自动化构建了
 
