@@ -454,7 +454,15 @@ git cherry-pick <start-commit-id>^..<end-commit-id> #有"^"标志的表示把<st
 
 `git commit -a`
 
+(84)拉去远程分支并在本地建立对应的新分支
+
+`git checkout origin/originBrName -b localBrName`（使用该方式会在本地新建分支localBrName，并自动切换到该本地分支localBrName，且采用此种方法建立的本地分支会和远程分支建立映射关系）
+
+`git fetch origin originBrName:localBrName`（使用该方式会在本地新建分支originBrName，但是不会自动切换到该本地分支localBrName，需要手动checkout，且不会建立本地分支和远程分支的映射关系）
+
 (2018-3-7修订)
 
 (2019-3-14修订)
+
+(2019-8-27修订)
 

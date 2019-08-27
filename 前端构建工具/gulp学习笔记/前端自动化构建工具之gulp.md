@@ -44,20 +44,20 @@ exports.default = series(clean, build);
 
  结合gulp的API https://www.gulpjs.com.cn/docs/api/
 
- （4）gulp的一些方法[旧版本]
+ （4）gulp的一些方法
 
- - task：这个API用来创建任务，在命令行下可以输入gulp test来执行test的任务
+ - task：这个API用来创建任务，在命令行下可以输入gulp test来执行test的任【务`task()` *方法用来将函数注册为任务（task）。虽然这个 API 依旧是可以使用的，但是 导出（export）将会是主要的注册机制，除非遇到 export 不起作用的情况。*】
  - run：这个API用来运行任务
  - watch：这个API用来监听任务
  - src：这个API设置需要处理的文件路径，可以是多个文件以数组的形式[main.scss,vender.scss]，也可以是正在表达式/*.scss
  - dest：这个API设置生成文件的路径，一个任务可以有多个生成路径，一个可以输出未压缩的版本，一个可以输出压缩后的版本
 
-（5）gulp中的部分方法[新版本] 参考：https://www.gulpjs.com.cn/docs/api/
-
 Gulp 提供了两个强大的组合方法： `series()` 和 `parallel()`，允许将多个独立的任务组合为一个更大的操作。这两个方法都可以接受任意数目的任务（task）函数或已经组合的操作。`series()` 和 `parallel()` 可以互相嵌套至任意深度。
 
-- 如果需要让任务（task）按顺序执行，请使用 `series()` 方法。
-- 对于希望以最大并发来运行的任务（tasks），可以使用 `parallel()` 方法将它们组合起来。
+- series：如果需要让任务（task）按顺序执行，请使用 `series()` 方法。
+- parallel：对于希望以最大并发来运行的任务（tasks），可以使用 `parallel()` 方法将它们组合起来。
+
+
 
 gulp的使用：
 
